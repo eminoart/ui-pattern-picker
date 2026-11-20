@@ -35,13 +35,12 @@ In a terminal there is no inline widget, so Claude writes a small HTML file for 
 
 ## Things to ask (with what you'll see)
 
-| Ask | You get |
+| Ask this | Or this |
 |---|---|
-| `What UI is there?` | The map of 10 groups, 9 per page. Click a group to see its categories. |
+| `What UI is there?` | Click a group, e.g. **Feedback & Status** |
 | <img src="docs/en-map.png" alt="UI map"> | <img src="docs/en-group.png" alt="Categories inside Feedback & Status"> |
-| `Show me loading options` | Every loading pattern, most common first, each one moving. |
+| `Show me loading options` | `What's a toast?` jumps to that card and highlights it |
 | <img src="docs/en-loading.png" alt="Loading patterns"> | <img src="docs/en-pick.png" alt="Overlays with Toast highlighted"> |
-| ↑ `Show me loading options` | ↑ `What's a toast?` jumps to the card and highlights it |
 | `Show me button states` | `Show me charts` |
 | <img src="docs/en-states.png" alt="Nine button states"> | <img src="docs/en-chart.png" alt="Chart types"> |
 | `What does "make it modern" actually mean?` | `Show me date pickers` |

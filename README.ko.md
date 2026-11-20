@@ -35,13 +35,12 @@ cp -r ui-pattern-picker/skill/ui-pattern-picker ~/.claude/skills/
 
 ## 이렇게 물어보세요 (나오는 화면)
 
-| 이렇게 물으면 | 이렇게 나와요 |
+| 이렇게 물으면 | 또는 이렇게 |
 |---|---|
-| `UI 뭐가 있어` | 그룹 10개 지도 (한 쪽에 9개씩). 그룹을 누르면 안의 종류가 나와요. |
+| `UI 뭐가 있어` | 그룹을 누르면, 예: **알리고 기다리게 하기** |
 | <img src="docs/ko-map.png" alt="UI 지도"> | <img src="docs/ko-group.png" alt="알리고 기다리게 하기 안의 종류"> |
-| `로딩 보여줘` | 로딩 패턴 전부, 많이 쓰는 순서로, 실제로 움직이며 |
+| `로딩 보여줘` | `토스트가 뭐야?` 해당 카드로 바로 가서 강조 |
 | <img src="docs/ko-loading.png" alt="로딩 패턴"> | <img src="docs/ko-pick.png" alt="토스트가 강조된 오버레이 창"> |
-| ↑ `로딩 보여줘` | ↑ `토스트가 뭐야?` 해당 카드로 바로 가서 강조 |
 | `버튼 상태 보여줘` | `차트 보여줘` |
 | <img src="docs/ko-states.png" alt="버튼 상태 9가지"> | <img src="docs/ko-chart.png" alt="차트 종류"> |
 | `"모던하게"가 정확히 뭐야?` | `날짜 고르는 UI 보여줘` |
