@@ -20,6 +20,11 @@ UI Pattern Picker is a **Claude skill** plus a catalog of **439 UI patterns**, e
 
 You never need to know a term first. Describing the situation works too: `What do I show while data loads?`
 
+## Try it on the web
+No install needed: open **[eminoart.github.io/ui-pattern-picker](https://eminoart.github.io/ui-pattern-picker/)**. Jump straight to a category with `?v=loading&lang=en`. Clicking **Use this ↗** copies a prompt you can paste into any AI.
+
+In ChatGPT, Codex and Cursor (which can't show the cards inside the chat) the skill gives you this link instead.
+
 ## Install
 
 ### Claude app (web or desktop)

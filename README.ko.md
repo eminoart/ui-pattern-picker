@@ -20,6 +20,11 @@ UI 패턴 피커는 **Claude 스킬**과 **UI 패턴 439개** 카드 모음입�
 
 용어를 몰라도 괜찮아요. 상황을 말로 설명해도 됩니다. 예: `데이터 불러오는 동안 화면이 비어 있어`
 
+## 웹에서 바로 보기
+설치 없이 **[eminoart.github.io/ui-pattern-picker](https://eminoart.github.io/ui-pattern-picker/)** 에서 볼 수 있어요. `?v=loading&lang=ko`처럼 주소를 붙이면 원하는 종류로 바로 갑니다. **이걸로 ↗**를 누르면 AI에 붙여넣을 문구가 복사돼요.
+
+ChatGPT·Codex·Cursor처럼 대화창에 카드를 띄울 수 없는 곳에서는 스킬이 이 링크를 대신 알려줍니다.
+
 ## 설치 방법
 
 ### Claude 앱 (웹·데스크톱)

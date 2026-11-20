@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UI Pattern Picker · 439 UI patterns (KO/EN)</title>
+<meta name="description" content="Don't know what a UI element is called? Browse 439 UI patterns as live preview cards in Korean and English, then copy a ready prompt.">
+<meta property="og:title" content="UI Pattern Picker">
+<meta property="og:description" content="UI 이름을 몰라도 OK. 439개 UI 패턴을 움직이는 카드로 보고 이름과 프롬프트를 바로 복사하세요.">
+<meta property="og:image" content="https://eminoart.github.io/ui-pattern-picker/docs/ko-map.png">
+<style>
+  body{margin:0;font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;background:#fafafa;color:#1a1a1a}
+  @media (prefers-color-scheme:dark){body{background:#141414;color:#eee}}
+  header{max-width:980px;margin:0 auto;padding:20px 16px 0;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  header h1{font-size:18px;margin:0;flex:1}
+  header a,header button{font:inherit;font-size:13px;color:inherit;opacity:.75;background:none;border:1px solid currentColor;border-radius:999px;padding:4px 12px;cursor:pointer;text-decoration:none}
+  main{max-width:980px;margin:0 auto;padding:12px 16px 40px}
+  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  #toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);opacity:0;transition:.25s;background:#222;color:#fff;padding:10px 16px;border-radius:10px;font-size:14px;max-width:90vw;pointer-events:none}
+  #toast.on{opacity:1;transform:translateX(-50%)}
+</style>
+</head>
+<body>
+<header>
+  <h1>UI Pattern Picker</h1>
+  <button id="lang"></button>
+  <a href="https://github.com/eminoart/ui-pattern-picker">GitHub</a>
+</header>
+<main>
+  <h2 class="sr-only">UI pattern catalog</h2>
+  <div id="uip"></div>
+</main>
+<div id="toast"></div>
+<script>
+  // Outside a chat, card buttons copy their prompt so it can be pasted into any AI.
+  (function(){
+    var p=new URLSearchParams(location.search);
+    var lang=p.get('lang')||((navigator.language||'').toLowerCase().indexOf('ko')===0?'ko':'en');
+    window.UIP_PAGE={v:p.get('v')||'map',lang:lang};
+    var t=document.getElementById('toast'),timer;
+    window.sendPrompt=function(q){
+      try{navigator.clipboard.writeText(q)}catch(e){}
+      t.textContent=(lang==='ko'?'복사했어요. AI 채팅에 붙여넣으세요: ':'Copied. Paste it into your AI chat: ')+q;
+      t.classList.add('on');clearTimeout(timer);timer=setTimeout(function(){t.classList.remove('on')},3500);
+    };
+    var b=document.getElementById('lang');
+    b.textContent=lang==='ko'?'English':'한국어';
+    b.onclick=function(){p.set('lang',lang==='ko'?'en':'ko');location.search=p.toString()};
+    document.documentElement.lang=lang;
+  })();
+</script>
+<script src="uip.js"></script>
+<script>UIP.show('uip',UIP_PAGE.v,UIP_PAGE.lang)</script>
+</body>
+</html>

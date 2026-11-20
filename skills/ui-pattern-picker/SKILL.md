@@ -25,7 +25,9 @@ When this skill runs, send only these lines to the inline visual tool (for examp
 - **language**: match the person. Korean → `ko` (Korean names with English alongside). Anything else → `en` (industry English terms).
 - Paging (9 per page), popularity order, "Popular" tags and the "Use this ↗", "Look-alike pairs", "UI map" buttons are all handled by the library.
 - Keep your text outside the widget to one or two sentences. Do not repeat the cards in text.
-- No inline visual tool available (for example in a terminal)? Write the same lines into an `.html` file with `<!DOCTYPE html>` and tell the person to open it.
+- **No inline visual tool** (ChatGPT, Codex, Cursor, a terminal, or the widget fails to load)? Give the web catalog link instead, built from the same target and language:
+  `https://eminoart.github.io/ui-pattern-picker/?v=[target]&lang=[ko|en]` (e.g. `?v=loading&lang=ko`, `?v=overlay.toast&lang=en`).
+  Say in one line that clicking a card's "Use this" button copies its prompt, to paste back into the chat. If the person prefers a local file, write the same widget lines into an `.html` file with `<!DOCTYPE html>` instead.
 
 ## Choosing the target
 - No argument, "what's there", "what can you do", "everything", "I don't know the terms" → `map`
