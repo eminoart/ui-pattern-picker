@@ -20,10 +20,12 @@ UI Pattern Picker is a **Claude skill** plus a catalog of **531 UI patterns**, e
 2. **Ask Claude:** `What UI is there?` A map of 10 groups appears in the chat.
 3. **Click your way down** to a pattern and press **Use this ↗**. Claude explains when to use it and writes a prompt you can paste into any AI or hand to a developer.
 
+Shortcuts: type in the **search box** at the top (`dashboard`, `skeleton`, `empty state`) to find a card across all 531 patterns, and press **+ Add** on several cards to send them together with **Make a prompt from N ↗**. Moving between levels happens inside the cards, with no wait for a reply.
+
 You never need to know a term first. Describing the situation works too: `What do I show while data loads?`
 
 ## Try it on the web
-No install needed: open **[eminoart.github.io/ui-pattern-picker](https://eminoart.github.io/ui-pattern-picker/)**. Jump straight to a category with `?v=loading&lang=en`. Clicking **Use this ↗** copies a prompt you can paste into any AI.
+No install needed: open **[eminoart.github.io/ui-pattern-picker](https://eminoart.github.io/ui-pattern-picker/)**. Jump straight to a category with `?v=loading&lang=en`, or search with `?q=dashboard&lang=en`. Clicking **Use this ↗** copies a prompt you can paste into any AI.
 
 In ChatGPT, Codex and Cursor (which can't show the cards inside the chat) the skill gives you this link instead.
 
@@ -85,7 +87,7 @@ The catalog is a single script, so it also works outside Claude:
 <script>UIP.show('uip', 'map', 'en')</script>
 ```
 
-`UIP.show(elementId, target, lang)`: `target` is `map`, a group id, a category id, or `category.pattern` (e.g. `loading.skeleton`); `lang` is `en` or `ko`. Outside a chat, **Use this ↗** copies its message to the clipboard.
+`UIP.show(elementId, target, lang)`: `target` is `map`, a group id, a category id, `category.pattern` (e.g. `loading.skeleton`), or `?words` to open a search (e.g. `?dashboard`); `lang` is `en` or `ko`. Outside a chat, **Use this ↗** copies its message to the clipboard.
 
 ## What's inside
 
@@ -129,7 +131,7 @@ The order reflects how commonly each pattern appears in widely used apps and des
    Use the `--uip-*` colour variables so previews follow light and dark mode. A card without a preview shows "Preview coming soon".
 3. Run `./build.sh`, then commit and push.
 
-jsDelivr caches `@main` for up to 12 hours. To see a change immediately, load a specific commit: `@<commit-hash>`.
+jsDelivr caches `@main` for up to 12 hours. The `Purge jsDelivr cache` GitHub Action clears it whenever `uip.js` changes on `main`, so updates show within minutes. You can also run it by hand from the Actions tab, or load a specific commit with `@<commit-hash>`.
 
 ## License
 

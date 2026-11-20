@@ -21,21 +21,22 @@ When this skill runs, send only these lines to the inline visual tool (for examp
 <script>UIP.show('uip','[target]','[ko|en]')</script>
 ```
 
-- **target**: `map` (everything) · a group id · a category id · `category.pattern` (highlights that card and jumps to its page)
+- **target**: `map` (everything) · a group id · a category id · `category.pattern` (highlights that card and jumps to its page) · `?words` (opens a search across all 531 patterns, e.g. `?대시보드`, `?empty state`)
 - **language**: match the person. Korean → `ko` (Korean names with English alongside). Anything else → `en` (industry English terms).
-- Paging (9 per page), popularity order, "Popular" tags and the "Use this ↗", "Look-alike pairs", "UI map" buttons are all handled by the library.
+- The library handles everything inside the widget: a search box, moving between map, group and category with a breadcrumb (no chat round trip), paging (9 per page), popularity order, "Popular" tags, "Use this ↗" for one pattern, and "+ Add" to collect several patterns and send them together.
 - Keep your text outside the widget to one or two sentences. Do not repeat the cards in text.
-- After the widget, add one short line with the web link for the same view, in case the preview does not load: `https://eminoart.github.io/ui-pattern-picker/?v=[target]&lang=[ko|en]`.
+- After the widget, add one short line with the web link for the same view, in case the preview does not load: `https://eminoart.github.io/ui-pattern-picker/?v=[target]&lang=[ko|en]` (for a search target use `?q=[words]&lang=[ko|en]`).
 - **No inline visual tool** (ChatGPT, Codex, Cursor, a terminal)? Give that web link instead (e.g. `?v=loading&lang=ko`, `?v=overlay.toast&lang=en`) and say in one line that clicking a card's "Use this" button copies its prompt, to paste back into the chat. If the person prefers a local file, write the same widget lines into an `.html` file with `<!DOCTYPE html>` and open it in the browser (`open` / `xdg-open` / `start`).
 
 ## Choosing the target
 - No argument, "what's there", "what can you do", "everything", "I don't know the terms" → `map`
 - A situation only ("what do I show while it loads?", "데이터 불러오는 동안 화면이 비어 있어") → the single best category; if several fit, their group
 - A pattern name ("skeleton", "toast") → `category.pattern`, e.g. `loading.skeleton`, `overlay.toast`. Pattern ids live in `catalog.js`; if unsure, pass just the category.
+- A word you can't place in one category ("dashboard", "empty", "progress") → `?word`, so the person sees every matching card at once. Keep it to one or two short words in the person's language; an unknown target also falls back to search.
 - "A vs B" or "what's the difference" ("토스트랑 스낵바 차이", "popup vs modal") → answer the difference in two or three sentences of text, then show the matching look-alike pair (list below), e.g. `overlaypairs.toastsnack`.
 
-## Ids and the exact names the widget uses
-Clicking a tile in the widget sends the person's message for them, using the Korean or English names below, e.g. `오버레이 창 보여줘` / `Show me Overlays`, `알리고 기다리게 하기 보여줘`, `UI 뭐가 있어`. Map those names straight to the id and show the widget again with no extra explanation.
+## Ids and names
+Moving around inside the widget sends no messages; only picks and search hand-offs do. People still type these names (`오버레이 창 보여줘`, `Show me Overlays`, `알리고 기다리게 하기 보여줘`, `UI 뭐가 있어`): map them straight to the id and show the widget with no extra explanation.
 
 | Group id | Korean · English | Categories: id (Korean · English) |
 |---|---|---|
@@ -66,11 +67,20 @@ The message looks like `UI 패턴 선택: 토스트 (Toast) — 알리고 기다
 2. **A prompt to paste into an AI** (code block): the name plus its English term plus concrete properties (size, position, behaviour, timing, states). Give a short and a detailed version. Include any style the person mentioned (e.g. glassmorphism).
 3. **Apply it**: if a design, codebase, page or artifact is in progress in this conversation, offer to apply it there and do so once they agree; otherwise ask in one line which screen to apply it to.
 
-If several picks arrive in a row, treat them as one set: answer each briefly, then give one combined prompt.
+## Several picks at once ("UI 패턴 여러 개 선택 (N개):" / "UI patterns picked (N):")
+The message lists one pattern per line, e.g. `- 대시보드 (Dashboard) — 화면 구성 › 페이지 레이아웃`. Treat them as one screen being designed together:
+1. One or two lines per pattern: what it does on this screen and its most confusable twin.
+2. **One combined prompt** (code block, short and detailed versions) that places every picked pattern on the same screen and says how they work together (e.g. a dashboard whose cards show a skeleton while loading, with a side nav). If two picks clash (e.g. two different primary navs), say so in one line and suggest which to keep.
+3. **Apply it**, as for a single pick.
+
+Picks sent separately in a row are handled the same way.
+
+## Search hand-off (`"…" 같은 UI를 찾고 있어` / `I'm looking for UI like "…"`)
+The person searched and found nothing. Work out what they mean, say the pattern name in one sentence, and show the widget at the best `category.pattern`, category, or a better `?word`.
 
 ## Do not
 - Draw or generate card HTML yourself
 - Repeat card contents in text
-- Explain at length after a navigation click (`… 보여줘` / `Show me …`); just show the next view
+- Explain at length when someone asks to see a category (`… 보여줘` / `Show me …`); just show it
 - Invent pattern names (if there is no agreed name, say so)
 - Present the popularity order as measured statistics (it is a judgment call)

@@ -36,7 +36,7 @@
   (function(){
     var p=new URLSearchParams(location.search);
     var lang=p.get('lang')||((navigator.language||'').toLowerCase().indexOf('ko')===0?'ko':'en');
-    window.UIP_PAGE={v:p.get('v')||'map',lang:lang};
+    window.UIP_PAGE={v:p.get('q')?'?'+p.get('q'):(p.get('v')||'map'),lang:lang};
     var t=document.getElementById('toast'),timer;
     window.sendPrompt=function(q){
       try{navigator.clipboard.writeText(q)}catch(e){}
