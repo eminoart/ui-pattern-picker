@@ -12,7 +12,7 @@ UI 패턴 피커는 **UI 패턴 439개**를 모은 카드 모음입니다. 카�
 
 스킬을 설치하면 "UI 뭐가 있어", "로딩 보여줘"처럼 물을 때마다 Claude가 이 카드 모음을 불러와 보여 줍니다.
 
-- **Claude 앱 (웹·데스크톱)**: [`ui-pattern-picker-skill.zip`](ui-pattern-picker-skill.zip)을 내려받아 **설정 → 기능 → 스킬**에서 업로드하세요.
+- **Claude 앱 (웹·데스크톱)**: [`ui-pattern-picker-skill.zip`](ui-pattern-picker-skill.zip)을 내려받아 **Customize(사용자 지정) → Skills(스킬)**에서 **+** → **Create skill → Upload a skill**을 눌러 zip을 올리세요.
 - **Claude Code**: 폴더를 스킬 폴더에 복사하세요.
   ```sh
   git clone https://github.com/eminoart/ui-pattern-picker

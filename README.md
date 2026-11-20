@@ -12,7 +12,7 @@ UI Pattern Picker is a catalog of **439 UI patterns**, each with a small **live 
 
 The skill tells Claude to load this catalog whenever you ask about UI, e.g. "what UI is there?" or "show me loading options".
 
-- **Claude apps (web, desktop)**: download [`ui-pattern-picker-skill.zip`](ui-pattern-picker-skill.zip), then upload it under **Settings → Capabilities → Skills**.
+- **Claude apps (web, desktop)**: download [`ui-pattern-picker-skill.zip`](ui-pattern-picker-skill.zip), then go to **Customize → Skills**, click **+**, choose **Create skill → Upload a skill**, and select the zip.
 - **Claude Code**: copy the folder into your skills directory:
   ```sh
   git clone https://github.com/eminoart/ui-pattern-picker
