@@ -14,5 +14,5 @@ A bilingual (Korean / English) catalog of 439 UI patterns with live mini preview
 Edit `catalog.js` (names and order) or `demos.js` (previews), then rebuild:
 
 ```sh
-cat catalog.js demos.js core.js > uip.js
+cat catalog.js demos.js demos-h.js demos-*.js core.js > uip.js
 ```

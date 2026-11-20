@@ -63,6 +63,13 @@ const CSS = `
 .uip-drawer{position:absolute;top:0;bottom:0;left:0;width:52%;background:var(--uip-surface);padding:12px;font-size:12px}
 .uip-field{width:72%;height:32px;border:0.5px solid var(--uip-bs);border-radius:8px;background:var(--uip-surface);display:flex;align-items:center;padding:0 10px;font-size:13px}
 .uip-caret{width:1px;height:14px;background:var(--uip-ac);margin-left:2px;animation:uip-cur 1s infinite}
+.uip-chip{display:inline-block;padding:4px 10px;border-radius:999px;font-size:12px;border:0.5px solid var(--uip-bs);background:var(--uip-surface);cursor:pointer;white-space:nowrap}
+.uip-chip.on{background:var(--uip-ac);color:#fff;border-color:var(--uip-ac)}
+.uip-box{background:var(--uip-surface);border:0.5px solid var(--uip-b);border-radius:10px}
+.uip-ph{position:relative;width:96px;height:118px;border:1.5px solid var(--uip-bs);border-radius:14px;background:var(--uip-surface);overflow:hidden}
+.uip-sel.on{background:var(--uip-acbg);color:var(--uip-ac)}
+.uip-vs{display:flex;align-items:center;gap:10px}.uip-vs>i{font-style:normal;font-size:11px;color:var(--uip-mute)}
+.uip-pv .uip-cap.abs{position:absolute;bottom:6px;left:0;right:0;margin:0}
 @keyframes uip-sp{to{transform:rotate(360deg)}}@keyframes uip-sh{0%{background-position:-220px 0}100%{background-position:220px 0}}
 @keyframes uip-fill{0%{width:0}80%,100%{width:100%}}@keyframes uip-bo{0%,80%,100%{transform:scale(.5);opacity:.4}40%{transform:scale(1);opacity:1}}
 @keyframes uip-ind{0%{left:-40%}100%{left:100%}}@keyframes uip-ring{0%{stroke-dashoffset:126}80%,100%{stroke-dashoffset:0}}
@@ -109,7 +116,7 @@ function renderMap(root,st){ const I=index(), T=TX[st.L]; const all=CAT;
  const s=st.page*PER, slice=all.slice(s,s+PER);
  root.innerHTML=`<div class="uip-head"><div><span class="uip-badge">${T.map} · ${all.length} · ${kinds}${st.L==='ko'?'종류':' kinds'} · ${tot}${st.L==='ko'?'개':' patterns'}</span><p class="uip-h">${T.mapH}</p></div></div>
  <div class="uip-grid">${slice.map((g,i)=>{const n=g.l2.reduce((b,c)=>b+c.list.length,0);return `<div class="uip-card tile" data-l1="${g.id}"><div class="uip-pv">${demo(g.rep,st.L)}</div><p class="uip-n"><b>${String(s+i+1).padStart(2,'0')}</b>${st.L==='ko'?g.ko:g.en}</p><p class="uip-e">${st.L==='ko'?g.en:''}</p><p class="uip-c">${g.l2.length} ${T.kinds} · ${n}${T.items||' '+T.patterns}</p></div>`}).join('')}</div>
- ${pager(st,all.length,()=>renderMap(root,st))}<p class="uip-note">${T.note}</p>`;
+ ${pager(st,all.length,()=>renderMap(root,st))}<p class="uip-note">${T.note}</p>`; UIP.fx._init(root);
  root.querySelectorAll('[data-l1]').forEach(el=>el.onclick=e=>{ if(e.target.closest('button,input,.uip-btn')) return; const sub={L:st.L,page:0,back:()=>renderMap(root,st)}; renderL1(root,sub,el.dataset.l1);});
 }
 
@@ -133,7 +140,7 @@ function renderL2(root,st,id,hl){ const c=index().l2[id], g=c.parent, T=TX[st.L]
 }
 
 UIP.show=function(elId,target,lang){ injectCss(); index(); const root=document.getElementById(elId); root.classList.add('uip');
- const L=(lang==='en')?'en':'ko', st={L,page:0}; target=(target||'map').trim();
+ const L=(lang==='en')?'en':'ko', st={L,page:0}; UIP._L=L; target=(target||'map').trim();
  if(target==='map') return renderMap(root,st);
  if(IDX.l1[target]) return renderL1(root,st,target);
  const [a,b]=target.split('.'); if(IDX.l2[a]) return renderL2(root,st,a,b);
@@ -151,7 +158,10 @@ UIP.fx={
  loadbtn(b,busy,idle){ if(b.dataset.busy) return; b.dataset.busy=1; b.innerHTML=`<span class="uip-spin"></span>${busy}`; setTimeout(()=>{b.innerHTML='✓';setTimeout(()=>{b.textContent=idle;b.dataset.busy=''},900)},1500);},
  spin45(b){b.style.transform=b.style.transform?'':'rotate(45deg)'},
  seg(s){[...s.parentNode.children].forEach(x=>x.classList.toggle('on',x===s))},
+ pick(e){[...e.parentNode.children].forEach(x=>x.classList.toggle('on',x===e))},
+ tog(e){e.classList.toggle('on')},
  menu(b){const m=b.parentNode.querySelector('.uip-menu'); m.classList.toggle('open');},
- _init(root){ root.querySelectorAll('.uip-stream').forEach(el=>{const full=el.dataset.text;let i=0;const iv=setInterval(()=>{if(!document.body.contains(el))return clearInterval(iv);i=i>full.length+15?0:i+1;el.textContent=full.slice(0,i)},60)});  root.querySelectorAll('.uip-steps').forEach(el=>{ let k=0; const tick=()=>{ if(!document.body.contains(el)) return clearInterval(iv); k=(k+1)%4; el.querySelectorAll('.uip-step').forEach((s,i)=>s.classList.toggle('on',i<k)); }; const iv=setInterval(tick,900); tick(); }); }
+ _init(root){ root.querySelectorAll('.uip-cal').forEach(el=>{const range=el.dataset.mode==='range';let a=14,b=range?17:null;const draw=()=>{el.innerHTML='<div style="font-weight:500;font-size:12px;margin-bottom:4px">'+(UIP._L==='en'?'Nov 2026':'2026년 11월')+'</div><div style="display:grid;grid-template-columns:repeat(7,20px);gap:2px">'+Array.from({length:21},(_,i)=>{const d=i+8,on=d===a||d===b,mid=b&&d>a&&d<b;return '<span data-d="'+d+'" style="line-height:20px;border-radius:5px;cursor:pointer;'+(on?'background:var(--uip-ac);color:#fff':mid?'background:var(--uip-acbg);color:var(--uip-ac)':'')+'">'+d+'</span>'}).join('')+'</div>'};draw();el.onclick=e=>{const d=+e.target.dataset.d;if(!d)return;if(range){if(b||d<a){a=d;b=null}else b=d}else a=d;draw()}});
+ root.querySelectorAll('.uip-rel').forEach(el=>{const L=el.dataset.l.split('|');let k=1;const iv=setInterval(()=>{if(!document.body.contains(el))return clearInterval(iv);k=(k+1)%L.length;el.textContent=L[k]},1400)});  root.querySelectorAll('.uip-stream').forEach(el=>{const full=el.dataset.text;let i=0;const iv=setInterval(()=>{if(!document.body.contains(el))return clearInterval(iv);i=i>full.length+15?0:i+1;el.textContent=full.slice(0,i)},60)});  root.querySelectorAll('.uip-steps').forEach(el=>{ let k=0; const tick=()=>{ if(!document.body.contains(el)) return clearInterval(iv); k=(k+1)%4; el.querySelectorAll('.uip-step').forEach((s,i)=>s.classList.toggle('on',i<k)); }; const iv=setInterval(tick,900); tick(); }); }
 };
 })();
