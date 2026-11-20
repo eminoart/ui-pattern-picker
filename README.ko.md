@@ -10,7 +10,7 @@
 
 AI에게 "모던하게 해줘"라고 했는데 평범한 결과가 나온 적 있나요? 대부분은 이름을 몰라서예요. 보면 원하는 걸 알아보지만, 그게 뭐라고 불리는지는 모르는 거죠.
 
-UI 패턴 피커는 **Claude 스킬**과 **UI 패턴 439개** 카드 모음입니다. 카드마다 눌러 보고, 입력해 보고, 움직이는 걸 볼 수 있는 **미리보기**가 있어요. Claude에게 평소 말투로 물어보고 마음에 드는 카드를 고르면, 정확한 이름과 바로 붙여 넣을 프롬프트를 받을 수 있습니다. 이름은 디자이너와 개발자가 실제로 쓰는 한국어·영어 용어를 따랐고, 많이 쓰이는 순서로 정렬돼 있어요.
+UI 패턴 피커는 **Claude 스킬**과 **UI 패턴 531개** 카드 모음입니다. 카드마다 눌러 보고, 입력해 보고, 움직이는 걸 볼 수 있는 **미리보기**가 있어요. Claude에게 평소 말투로 물어보고 마음에 드는 카드를 고르면, 정확한 이름과 바로 붙여 넣을 프롬프트를 받을 수 있습니다. 이름은 디자이너와 개발자가 실제로 쓰는 한국어·영어 용어를 따랐고, 많이 쓰이는 순서로 정렬돼 있어요.
 
 <p align="center"><img src="docs/ko-map.png" alt="UI 지도: 패턴 그룹 10개" width="620"></p>
 
@@ -52,16 +52,16 @@ cp -r ui-pattern-picker/skills/ui-pattern-picker ~/.claude/skills/
 
 | 이렇게 물으면 | 또는 이렇게 |
 |---|---|
-| `UI 뭐가 있어` | 그룹을 누르면, 예: **알리고 기다리게 하기** |
-| <img src="docs/ko-map.png" alt="UI 지도"> | <img src="docs/ko-group.png" alt="알리고 기다리게 하기 안의 종류"> |
-| `로딩 보여줘` | `토스트가 뭐야?` 해당 카드로 바로 가서 강조 |
-| <img src="docs/ko-loading.png" alt="로딩 패턴"> | <img src="docs/ko-pick.png" alt="토스트가 강조된 오버레이 창"> |
-| `버튼 상태 보여줘` | `차트 보여줘` |
-| <img src="docs/ko-states.png" alt="버튼 상태 9가지"> | <img src="docs/ko-chart.png" alt="차트 종류"> |
-| `"모던하게"가 정확히 뭐야?` | `날짜 고르는 UI 보여줘` |
-| <img src="docs/ko-modern.png" alt="모던한 느낌 요소 전후 비교"> | <img src="docs/ko-date.png" alt="날짜·시간 선택"> |
-| `채팅 UI 보여줘` | `팝업이랑 모달 보여줘` |
-| <img src="docs/ko-chat.png" alt="채팅 UI 패턴"> | <img src="docs/ko-overlay.png" alt="오버레이 창 패턴"> |
+| `act` 누르고 고르기 | `button` 버튼 (13) · `btnstyle` 버튼 트렌드 (8) · `states` 버튼 상태 (9) · `share` 공유 (9) · `selection` 선택 컨트롤 (12) · `slider` 슬라이더 (8) · `toggle` 토글 스타일 (8) · `menu` 드롭다운·메뉴 (10) · `date` 날짜·시간 선택 (13) |
+| `input` 입력받기 | `text` 입력창 (13) · `search` 검색 (12) · `form` 폼 구성 (9) · `upload` 업로드 (9) |
+| `feedback` 알리고 기다리게 하기 | `loading` 로딩 (14) · `refresh` 새로고침 (8) · `overlay` 오버레이 창 (13) · `notification` 알림 (11) · `completion` 완료 표시 (9) · `state` 상태 화면 (10) · `permission` 권한 요청 (10) |
+| `nav` 이동하기 | `primary` 메인 내비 (11) · `sidenav` 사이드 내비 (16) · `bottomnav` 하단 내비 (8) · `tabs` 탭 (7) · `wayfinding` 페이지 이동 (9) · `steps` 진행 단계 (8) |
+| `display` 보여주기 | `list` 목록 (12) · `card` 카드 (9) · `table` 테이블 (9) · `media` 미디어 (9) · `people` 사람·프로필 (9) |
+| `data` 숫자 보여주기 | `chart` 차트 (13) · `metric` 지표 위젯 (9) · `map` 지도 (7) |
+| `layout` 화면 구성 | `page` 페이지 레이아웃 (12) · `landing` 랜딩 섹션 (10) · `screens` 앱 필수 화면 (12) · `onboard` 온보딩 방식 (8) |
+| `style` 느낌·움직임 | `visual` 비주얼 스타일 (12) · `modern` 모던한 느낌 요소 (9) · `type` 글자 스타일 (14) · `textanim` 텍스트 등장 (9) · `scroll` 스크롤 모션 (17) · `micro` 마이크로인터랙션 (11) · `transition` 화면 전환 (15) |
+| `ai` AI·대화 | `chat` 채팅 UI (10) · `aistate` AI 작업 표시 (8) |
+| `pairs` 헷갈리는 짝 | `uipairs` UI 짝 (11) · `overlaypairs` 창·알림 짝 (10) · `inputpairs` 입력창 짝 (10) · `icons` 아이콘 짝 (9) |
 
 이런 것도 물어보세요: `헷갈리는 아이콘 짝` · `토스트랑 스낵바 차이가 뭐야?` · `글래스모피즘` · `랜딩 페이지 구성` · `검색 결과가 없을 때 화면은?`
 
@@ -89,7 +89,7 @@ Claude가 세 가지를 답해 줍니다.
 
 ## 들어 있는 것
 
-그룹 10개, 종류 43개, 패턴 439개. 괄호 안 숫자는 그 종류에 들어 있는 패턴 수입니다.
+그룹 10개, 종류 51개, 패턴 531개. 괄호 안 숫자는 그 종류에 들어 있는 패턴 수입니다.
 
 | 그룹 | 종류 |
 |---|---|

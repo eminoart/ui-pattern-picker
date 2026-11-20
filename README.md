@@ -10,7 +10,7 @@
 
 Ever asked an AI to "make it look modern" and got something generic? Usually it's a vocabulary problem: you'd recognise what you want on sight, but you don't know what it's called.
 
-UI Pattern Picker is a **Claude skill** plus a catalog of **439 UI patterns**, each with a small **live preview** you can click, type into or watch move. Ask Claude a plain question, point at the card you like, and get the exact name and a ready-to-paste prompt. Names come in English and Korean, using the terms designers and developers actually use, ordered by how commonly each pattern is used.
+UI Pattern Picker is a **Claude skill** plus a catalog of **531 UI patterns**, each with a small **live preview** you can click, type into or watch move. Ask Claude a plain question, point at the card you like, and get the exact name and a ready-to-paste prompt. Names come in English and Korean, using the terms designers and developers actually use, ordered by how commonly each pattern is used.
 
 <p align="center"><img src="docs/en-map.png" alt="The UI map: 10 groups of patterns" width="620"></p>
 
@@ -52,16 +52,16 @@ In a terminal there is no inline widget, so Claude writes a small HTML file for 
 
 | Ask this | Or this |
 |---|---|
-| `What UI is there?` | Click a group, e.g. **Feedback & Status** |
-| <img src="docs/en-map.png" alt="UI map"> | <img src="docs/en-group.png" alt="Categories inside Feedback & Status"> |
-| `Show me loading options` | `What's a toast?` jumps to that card and highlights it |
-| <img src="docs/en-loading.png" alt="Loading patterns"> | <img src="docs/en-pick.png" alt="Overlays with Toast highlighted"> |
-| `Show me button states` | `Show me charts` |
-| <img src="docs/en-states.png" alt="Nine button states"> | <img src="docs/en-chart.png" alt="Chart types"> |
-| `What does "make it modern" actually mean?` | `Show me date pickers` |
-| <img src="docs/en-modern.png" alt="Modern details, before and after"> | <img src="docs/en-date.png" alt="Date and time pickers"> |
-| `Show me chat UI` | `Show me popups and modals` |
-| <img src="docs/en-chat.png" alt="Chat UI patterns"> | <img src="docs/en-overlay.png" alt="Overlay patterns"> |
+| `act` Actions & Selection | `button` Button (13) · `btnstyle` Button trends (8) · `states` Button states (9) · `share` Share (9) · `selection` Selection controls (12) · `slider` Sliders (8) · `toggle` Toggle styles (8) · `menu` Menus & Pickers (10) · `date` Date & Time (13) |
+| `input` Input & Forms | `text` Text input (13) · `search` Search (12) · `form` Forms (9) · `upload` Upload (9) |
+| `feedback` Feedback & Status | `loading` Loading (14) · `refresh` Refresh (8) · `overlay` Overlays (13) · `notification` Notifications (11) · `completion` Completion feedback (9) · `state` Empty & Error states (10) · `permission` Permissions (10) |
+| `nav` Navigation | `primary` Primary navigation (11) · `sidenav` Side navigation (16) · `bottomnav` Bottom navigation (8) · `tabs` Tabs (7) · `wayfinding` Wayfinding (9) · `steps` Progress steps (8) |
+| `display` Content Display | `list` Lists & Grids (12) · `card` Cards (9) · `table` Tables (9) · `media` Media (9) · `people` People (9) |
+| `data` Data Visualization | `chart` Charts (13) · `metric` Metric widgets (9) · `map` Maps (7) |
+| `layout` Layout & Screens | `page` Page layouts (12) · `landing` Landing sections (10) · `screens` Key screens (12) · `onboard` Onboarding styles (8) |
+| `style` Style & Motion | `visual` Visual styles (12) · `modern` Modern details (9) · `type` Typography styles (14) · `textanim` Text animation (9) · `scroll` Scroll motion (17) · `micro` Micro-interactions (11) · `transition` Screen transitions (15) |
+| `ai` AI & Chat | `chat` Chat UI (10) · `aistate` AI states (8) |
+| `pairs` Look-alike pairs | `uipairs` UI pairs (11) · `overlaypairs` Overlay pairs (10) · `inputpairs` Input pairs (10) · `icons` Icon pairs (9) |
 
 More to try: `look-alike icon pairs` · `What's the difference between a toast and a snackbar?` · `glassmorphism` · `landing page sections` · `What should an empty search result look like?`
 
@@ -89,7 +89,7 @@ The catalog is a single script, so it also works outside Claude:
 
 ## What's inside
 
-10 groups, 43 categories, 439 patterns. The number in brackets is how many patterns each category holds.
+10 groups, 51 categories, 531 patterns. The number in brackets is how many patterns each category holds.
 
 | Group | Categories |
 |---|---|

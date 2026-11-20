@@ -1,7 +1,7 @@
 ---
 name: ui-pattern-picker
 description: >-
-  Visual UI component and design pattern finder for when you don't know what a UI element is called. Shows 439 frontend UI patterns (loading spinner, skeleton, button, modal, toast, tabs, navigation, form input, date picker, chart, table, card, glassmorphism, micro-interaction, AI chat UI) as live animated preview cards in Korean and English, then gives the industry name and a ready prompt to apply it. Use for UI inspiration, design vocabulary, vague requests like "make it modern", or "I don't know the name of this UI". Triggers: "what UI is there", "what is this UI called", "show me loading options", "UI 이름을 모르겠어", "이거 뭐라고 불러", "UI 뭐가 있어", "로딩 보여줘".
+  Visual UI component and design pattern finder for when you don't know what a UI element is called. Shows 531 frontend UI patterns (loading spinner, skeleton, button, modal, toast, tabs, navigation, form input, date picker, chart, table, card, glassmorphism, micro-interaction, AI chat UI) as live animated preview cards in Korean and English, then gives the industry name and a ready prompt to apply it. Use for UI inspiration, design vocabulary, vague requests like "make it modern", or "I don't know the name of this UI". Triggers: "what UI is there", "what is this UI called", "show me loading options", "UI 이름을 모르겠어", "이거 뭐라고 불러", "UI 뭐가 있어", "로딩 보여줘".
 ---
 
 # UI Pattern Picker
@@ -37,13 +37,13 @@ When this skill runs, send only these lines to the inline visual tool (for examp
 **Group ids**: `act` Actions & Selection · `input` Input & Forms · `feedback` Feedback & Status · `nav` Navigation · `display` Content Display · `data` Data Visualization · `layout` Layout & Screens · `style` Style & Motion · `ai` AI & Chat · `pairs` Look-alike pairs
 
 **Category ids** (words to match in brackets)
-- act: `button` (buttons) · `states` (button states) · `share` · `selection` (toggle, checkbox, radio, chips) · `menu` (dropdown, menus) · `date` (date, calendar, time)
+- act: `button` (buttons) · `btnstyle` (button trends: glass, liquid glass, clay…) · `states` (button states) · `share` · `selection` (toggle, checkbox, radio, chips) · `slider` (range, knob, scrubber…) · `toggle` (switch styles) · `menu` (dropdown, menus) · `date` (date, calendar, time)
 - input: `text` (text fields) · `search` (search, filters) · `form` (forms, sign-up) · `upload`
-- feedback: `loading` · `overlay` (popup, modal, toast, bottom sheet) · `notification` (badges, alerts) · `completion` (done states) · `state` (empty, error) · `permission`
-- nav: `primary` (main nav, tab bar, sidebar) · `tabs` · `wayfinding` (pagination, back, breadcrumb)
+- feedback: `loading` · `refresh` (pull to refresh, new posts, load more) · `overlay` (popup, modal, toast, bottom sheet) · `notification` (badges, alerts) · `completion` (done states) · `state` (empty, error) · `permission`
+- nav: `primary` (main nav, tab bar, sidebar) · `sidenav` (drawers, side menus) · `bottomnav` (bottom tab bar styles) · `tabs` · `wayfinding` (pagination, back, breadcrumb) · `steps` (stepper, progress steps)
 - display: `list` · `card` · `table` · `media` (photos, video) · `people` (avatars, profiles)
 - data: `chart` · `metric` (KPI, gauges) · `map`
-- layout: `page` (page layouts) · `landing` (website sections) · `screens` (login, settings, checkout…)
+- layout: `page` (page layouts) · `landing` (website sections) · `screens` (login, settings, checkout…) · `onboard` (onboarding styles, coach mark, product tour)
 - style: `visual` (glass, dark, neo-brutalism…) · `modern` ("make it modern") · `type` (type styles) · `textanim` (text animation) · `scroll` · `micro` (micro-interactions) · `transition`
 - ai: `chat` (chat UI) · `aistate` (AI working states)
 - pairs: `uipairs` · `overlaypairs` · `inputpairs` · `icons`
