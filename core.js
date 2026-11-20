@@ -30,6 +30,34 @@ const CSS = `
 .uip-pi{font-size:13px;color:var(--uip-sub)}
 .uip-foot{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 .uip-note{font-size:13px;color:var(--uip-sub);margin:10px 0 0}
+.uip-top{position:relative;margin:.25rem 0 .5rem}
+.uip-q{width:100%;height:40px;font-size:14px;padding:0 12px;border:0.5px solid var(--uip-bs);border-radius:10px;background:var(--uip-surface);color:var(--uip-tx);font-family:inherit}
+.uip-q:focus{outline:none;border-color:var(--uip-ac);box-shadow:0 0 0 3px var(--uip-acbg)}
+.uip-crumb{font-size:13px;color:var(--uip-sub);margin:6px 0 0;display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.uip-crumb a{color:var(--uip-ac);cursor:pointer;text-decoration:none}.uip-crumb a:hover{text-decoration:underline}.uip-crumb i{font-style:normal;color:var(--uip-mute)}
+.uip-crumb span{color:inherit}
+.uip-acts{display:flex;gap:6px;margin-top:2px}
+.uip .uip-pick{flex:1;background:var(--fill-accent,var(--uip-ac));color:var(--on-accent,#fff);border:0;border-radius:8px;padding:9px 10px;font-size:14px;font-weight:500;cursor:pointer;font-family:inherit;transition:transform .1s,filter .15s}
+.uip .uip-pick:hover{filter:brightness(1.1)}.uip .uip-pick:active{transform:scale(.97)}.uip .uip-pick.sent{background:var(--uip-ok,#1d9e75)}
+.uip .uip-add{background:var(--uip-surface);color:var(--uip-sub);border:0.5px solid var(--uip-bs);border-radius:8px;padding:9px 10px;font-size:13px;white-space:nowrap;cursor:pointer;font-family:inherit}
+.uip .uip-add.on{background:var(--uip-acbg);color:var(--uip-ac);border-color:var(--uip-ac)}
+.uip-hint{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:13px;line-height:1.6;color:var(--uip-tx);background:var(--uip-neutral);border-radius:10px;padding:9px 12px;margin:0 0 12px}
+.uip-trk{display:flex;align-items:center;gap:4px;list-style:none;margin:0;padding:0;font-size:12px;color:var(--uip-mute);white-space:nowrap}
+.uip-trk li{display:flex;align-items:center;gap:4px}.uip-trk li+li:before{content:'›';margin-right:4px;color:var(--uip-mute)}
+.uip-trk b{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;border:1px solid var(--uip-bs);font-weight:500;font-size:11px}
+.uip-trk .done{color:var(--uip-sub)}.uip-trk .on{color:var(--uip-ac);font-weight:500}.uip-trk .on b{background:var(--uip-ac);border-color:var(--uip-ac);color:#fff}
+.uip-k{display:inline-block;background:var(--fill-accent,var(--uip-ac));color:var(--on-accent,#fff);border-radius:6px;padding:0 7px;font-size:12px;font-weight:500;white-space:nowrap}
+.uip-k.o{background:var(--uip-surface);color:var(--uip-sub);border:0.5px solid var(--uip-bs)}
+.uip-tray .uip-btn{font-weight:500;font-size:14px;padding:9px 16px;background:var(--fill-accent,var(--uip-ac));color:var(--on-accent,#fff)}.uip-tray .uip-btn.sent{background:var(--uip-ok,#1d9e75)}
+.uip-catl{color:var(--uip-ac);cursor:pointer}
+.uip-cats{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:0 0 12px;font-size:12px;color:var(--uip-sub)}
+.uip-tray{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:10px 12px;margin:0 0 8px;border:0.5px solid var(--uip-ac);border-radius:12px;background:var(--uip-acbg)}
+.uip-tray[hidden]{display:none}
+.uip-tl{font-size:13px;color:var(--uip-ac);font-weight:500;margin-right:4px}
+.uip-tray .uip-chip{display:inline-flex;align-items:center;gap:4px;cursor:default}
+.uip-tray .uip-chip button{background:none;border:0;color:inherit;font-size:14px;line-height:1;padding:0 0 0 2px;cursor:pointer;min-height:0}
+.uip-tsp{flex:1}
+.uip-tclr{font-size:12px}
 .uip-soon{font-size:12px;color:var(--uip-mute);text-align:center;padding:0 10px}
 .uip-ln{height:7px;border-radius:4px;background:var(--uip-bs)}
 .uip-row{padding:6px 0;border-bottom:0.5px solid var(--uip-b)}
@@ -82,16 +110,22 @@ const CSS = `
 @keyframes uip-pulllist{0%,20%{transform:none}40%,70%{transform:translateY(22px)}90%,100%{transform:none}}`;
 
 const TX = {
- ko:{map:'UI 지도',mapH:'어떤 걸 하고 싶으세요?',l1H:'어떤 걸 찾으세요?',kinds:'종류',items:'개',patterns:'패턴',pick:'이걸로 ↗',view:'카드로 보기 ↗',home:'← 처음으로',prev:'‹ 이전',next:'다음 ›',
-  popular:'많이 씀',top:'인기',pairs:'헷갈리는 짝 보기 ↗',others:'의 다른 종류 ↗',toMap:'UI 지도로 ↗',soon:'미리보기 준비 중',
+ ko:{map:'UI 지도',mapH:'어떤 걸 하고 싶으세요?',l1H:'어떤 걸 찾으세요?',kinds:'종류',items:'개',patterns:'패턴',pick:'이걸로 ↗',view:'카드로 보기',prev:'‹ 이전',next:'다음 ›',
+  popular:'많이 씀',top:'인기',pairs:'헷갈리는 짝 보기',others:'의 다른 종류',toMap:'UI 지도로',soon:'미리보기 준비 중',
   note:'순서는 많이 쓰이는 정도를 기준으로 한 경험적 판단이에요. 용어를 몰라도 상황을 말로 적으면 찾아 드려요.',
-  l2H:n=>`"${n} 넣어줘" 대신 이 이름으로 말해 보세요`,showQ:n=>`${n} 보여줘`,pairsQ:n=>`${n} 헷갈리는 짝 보여줘`,mapQ:'UI 뭐가 있어',
-  pickQ:(k,e,l1,l2)=>`UI 패턴 선택: ${k} (${e}) — ${l1} › ${l2}`},
- en:{map:'UI map',mapH:'What do you want to do?',l1H:'What are you looking for?',kinds:'kinds',items:'',patterns:'patterns',pick:'Use this ↗',view:'See cards ↗',home:'← Back to map',prev:'‹ Prev',next:'Next ›',
-  popular:'Popular',top:'Top',pairs:'Look-alike pairs ↗',others:': other kinds ↗',toMap:'UI map ↗',soon:'Preview coming soon',
+  l2H:n=>`"${n} 넣어줘" 대신 이 이름으로 말해 보세요`,
+  ph:'이름이나 상황으로 찾기 (예: 대시보드, 로딩, 빈 화면)',sH:(q,n)=>`"${q}" 검색 결과 ${n}개`,sNone:q=>`"${q}"에 맞는 패턴이 없어요. 상황을 말로 적어 주면 Claude가 찾아 드려요.`,sAsk:q=>`"${q}" 같은 UI를 찾고 있어 ↗`,askQ:q=>`"${q}" 같은 UI를 찾고 있어. 어떤 패턴이 맞을까?`,sCats:'종류 바로가기',clear:'지우기',
+  add:'+ 담기',added:'✓ 담음',sent:'✓ 전달했어요',steps:['무엇을 할지','종류','카드에서 이걸로 ↗'],hMap:'그룹을 눌러 들어가세요. 마지막에 카드의 <span class="uip-k">이걸로 ↗</span>를 누르면 Claude가 이름과 프롬프트를 알려 줘요.',hL1:'종류를 누르세요. 다음 화면에서 카드를 고르면 끝나요.',hL2:'마지막 단계예요. 마음에 드는 카드의 <span class="uip-k">이걸로 ↗</span>를 누르세요. 여러 개라면 <span class="uip-k o">+ 담기</span> 후 위쪽 <span class="uip-k">프롬프트 만들기 ↗</span>.',tray:n=>`담은 패턴 ${n}개`,traySend:n=>`${n}개로 프롬프트 만들기 ↗`,trayClear:'비우기',rm:'빼기',
+  pickQ:(k,e,l1,l2)=>`UI 패턴 선택: ${k} (${e}) — ${l1} › ${l2}`,
+  multiQ:list=>`UI 패턴 여러 개 선택 (${list.length}개):\n`+list.map(([k,e,l1,l2])=>`- ${k} (${e}) — ${l1} › ${l2}`).join('\n')},
+ en:{map:'UI map',mapH:'What do you want to do?',l1H:'What are you looking for?',kinds:'kinds',items:'',patterns:'patterns',pick:'Use this ↗',view:'See cards',prev:'‹ Prev',next:'Next ›',
+  popular:'Popular',top:'Top',pairs:'Look-alike pairs',others:': other kinds',toMap:'UI map',soon:'Preview coming soon',
   note:'Order reflects how commonly each is used (a judgment call, not measured data). You can also just describe the situation.',
-  l2H:n=>`Say the exact name instead of "add some ${n.toLowerCase()}"`,showQ:n=>`Show me ${n}`,pairsQ:n=>`Show look-alike ${n} pairs`,mapQ:'What UI patterns are there',
-  pickQ:(k,e,l1,l2)=>`UI pattern picked: ${e} — ${l1} › ${l2}`}
+  l2H:n=>`Say the exact name instead of "add some ${n.toLowerCase()}"`,
+  ph:'Search by name or situation (e.g. dashboard, loading, empty state)',sH:(q,n)=>`${n} results for "${q}"`,sNone:q=>`No pattern matches "${q}". Describe the situation and Claude will find one.`,sAsk:q=>`Find UI like "${q}" ↗`,askQ:q=>`I'm looking for UI like "${q}". Which pattern fits?`,sCats:'Jump to a kind',clear:'Clear',
+  add:'+ Add',added:'✓ Added',sent:'✓ Sent',steps:['What to do','Kind','Use this ↗ on a card'],hMap:'Open a group. At the end, press <span class="uip-k">Use this ↗</span> on a card and Claude gives you the name and a prompt.',hL1:'Pick a kind. You choose a card on the next screen.',hL2:'Last step: press <span class="uip-k">Use this ↗</span> on the card you like. For several, press <span class="uip-k o">+ Add</span>, then <span class="uip-k">Make a prompt ↗</span> at the top.',tray:n=>`${n} pattern${n>1?'s':''} picked`,traySend:n=>`Make a prompt from ${n} ↗`,trayClear:'Clear',rm:'Remove',
+  pickQ:(k,e,l1,l2)=>`UI pattern picked: ${e} — ${l1} › ${l2}`,
+  multiQ:list=>`UI patterns picked (${list.length}):\n`+list.map(([k,e,l1,l2])=>`- ${e} — ${l1} › ${l2}`).join('\n')}
 };
 
 let IDX=null;
@@ -104,49 +138,101 @@ function injectCss(){ if(document.getElementById('uip-css')) return; const s=doc
 const send=q=>{ if(typeof window.sendPrompt==='function') window.sendPrompt(q); else { try{navigator.clipboard.writeText(q)}catch(e){} alert&&0; } };
 UIP._send=send;
 
-function name(o,L,both){ return L==='ko'? (both? `${o.ko} <span style="color:var(--uip-sub);font-weight:400">${o.en}</span>`:o.ko) : o.en; }
 function demo(key,L){ const f=D[key]; const t=(k,e)=>L==='ko'?k:e; return f? f(t) : `<div class="uip-soon">${TX[L].soon}</div>`; }
-function esc(s){return String(s).replace(/'/g,"\\'").replace(/"/g,'&quot;')}
-function pager(st,total,rerender){ if(total<=PER) return ''; const pages=Math.ceil(total/PER), T=TX[st.L];
- const id='p'+Math.random().toString(36).slice(2,7); UIP['_'+id]=d=>{st.page=(st.page+d+pages)%pages; rerender();};
- return `<div class="uip-nav"><button onclick="UIP._${id}(-1)">${T.prev}</button><span class="uip-pi">${st.page+1} / ${pages}</span><button onclick="UIP._${id}(1)">${T.next}</button></div>`; }
+function h(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+const PAIRMAP={overlay:'overlaypairs',notification:'overlaypairs',permission:'overlaypairs',onboard:'overlaypairs',text:'inputpairs',search:'inputpairs',form:'inputpairs',date:'inputpairs'};
+const pairsFor=c=>c.parent.id==='pairs'?null:(PAIRMAP[c.id]||(/icon/.test(c.id)?'icons':'uipairs'));
+const nm=(o,L)=>L==='ko'?o.ko:o.en;
+const norm=s=>String(s||'').toLowerCase().replace(/[\s·\-_()/'".,]/g,'');
+const item=k=>{const [a,b]=k.split('.');const c=IDX.l2[a];const x=c&&c.list.find(y=>y.id===b);return x?{c,x}:null};
+const pickArgs=(c,x,L)=>[x.ko,x.en,nm(c.parent,L),nm(c,L)];
 
-function renderMap(root,st){ const I=index(), T=TX[st.L]; const all=CAT;
- const tot=all.reduce((a,g)=>a+g.l2.reduce((b,c)=>b+c.list.length,0),0), kinds=all.reduce((a,g)=>a+g.l2.length,0);
- const s=st.page*PER, slice=all.slice(s,s+PER);
- root.innerHTML=`<div class="uip-head"><div><span class="uip-badge">${T.map} · ${all.length}${st.L==='ko'?'개 그룹':' groups'} · ${kinds}${st.L==='ko'?'종류':' kinds'} · ${tot}${st.L==='ko'?'개':' patterns'}</span><p class="uip-h">${T.mapH}</p></div></div>
- <div class="uip-grid">${slice.map((g,i)=>{const n=g.l2.reduce((b,c)=>b+c.list.length,0);return `<div class="uip-card tile" data-l1="${g.id}"><div class="uip-pv">${demo(g.rep,st.L)}</div><p class="uip-n"><b>${String(s+i+1).padStart(2,'0')}</b>${st.L==='ko'?g.ko:g.en}</p><p class="uip-e">${st.L==='ko'?g.en:''}</p><p class="uip-c">${g.l2.length} ${T.kinds} · ${n}${T.items||' '+T.patterns}</p></div>`}).join('')}</div>
- ${pager(st,all.length,()=>renderMap(root,st))}<p class="uip-note">${T.note}</p>`; UIP.fx._init(root);
- root.querySelectorAll('[data-l1]').forEach(el=>el.onclick=e=>{ if(e.target.closest('button,input,.uip-btn')) return; const sub={L:st.L,page:0,back:()=>renderMap(root,st)}; renderL1(root,sub,el.dataset.l1);});
+function search(q){ const toks=q.split(/\s+/).map(norm).filter(Boolean); if(!toks.length) return {items:[],cats:[]};
+ const items=[],cats=[]; let ord=0;
+ CAT.forEach(g=>g.l2.forEach(c=>{
+  const cf=[c.ko,c.en,c.easy[0],c.easy[1],c.id,g.ko,g.en].map(norm);
+  let cs=0; if(toks.every(t=>cf.some(f=>f.includes(t)))){ cs=toks.reduce((a,t)=>a+(cf[0]===t||cf[1]===t?100:cf.slice(0,2).some(f=>f.startsWith(t))?60:20),0); cats.push({c,s:cs}); }
+  c.list.forEach(x=>{ ord++;
+   const nf=[x.ko,x.en].map(norm), hf=[x.hko,x.hen].map(norm), idf=norm(x.id);
+   let s=0, ok=true;
+   for(const t of toks){ let v=0;
+    if(nf.some(f=>f===t)) v=100; else if(nf.some(f=>f.includes(t))) v=50;
+    else if(idf.includes(t)) v=30; else if(cf.slice(0,4).some(f=>f.includes(t))) v=15; else if(hf.some(f=>f.includes(t))) v=10;
+    if(!v){ok=false;break} if(v>=50&&cf.slice(0,2).some(f=>f.includes(t))) v+=20; s+=v; }
+   if(ok) items.push({c,x,s,o:ord});
+  });
+ }));
+ items.sort((a,b)=>b.s-a.s||a.o-b.o); cats.sort((a,b)=>b.s-a.s);
+ return {items,cats:cats.slice(0,4).map(z=>z.c)};
 }
 
-function renderL1(root,st,id){ const g=index().l1[id], T=TX[st.L]; const s=st.page*PER, slice=g.l2.slice(s,s+PER);
- root.innerHTML=`<div class="uip-head"><div><span class="uip-badge">${st.L==='ko'?g.ko:g.en} · ${g.l2.length} ${T.kinds}</span><p class="uip-h">${T.l1H}</p></div>${st.back?`<button class="uip-back">${T.home}</button>`:`<button class="uip-back">${T.toMap}</button>`}</div>
- <div class="uip-grid">${slice.map((c,i)=>{const lab=st.L==='ko'?c.easy[0]:c.easy[1];const top=c.list.slice(0,3).map(x=>st.L==='ko'?x.ko:x.en).join(' · ');return `<div class="uip-card tile" data-l2="${c.id}"><div class="uip-pv">${demo(c.id+'.'+c.list[0].id,st.L)}</div><p class="uip-n"><b>${s+i+1}</b>${lab}</p><p class="uip-e">${st.L==='ko'?c.ko+' '+c.en:c.en}</p><p class="uip-c">${c.list.length} ${T.patterns}</p><p class="uip-x">${T.top}: ${top}</p><p class="uip-c">${T.view}</p></div>`}).join('')}</div>
- ${pager(st,g.l2.length,()=>renderL1(root,st,id))}`;
- UIP.fx._init(root); root.querySelector('.uip-back').onclick=()=> st.back? st.back() : send(T.mapQ);
- root.querySelectorAll('[data-l2]').forEach(el=>el.onclick=e=>{ if(e.target.closest('button,input,.uip-btn')) return; const c=index().l2[el.dataset.l2]; send(T.showQ(st.L==='ko'?c.ko:c.en)); });
-}
+function makeApp(root,L,start){
+ const T=TX[L]; const st={L,v:start,page:0,cart:[],q:''};
+ root.innerHTML=`<div class="uip-top"><input class="uip-q" type="search" placeholder="${h(T.ph)}" aria-label="${h(T.ph)}"></div><div class="uip-tray" hidden></div><div class="uip-body"></div>`;
+ const body=root.querySelector('.uip-body'), tray=root.querySelector('.uip-tray'), qi=root.querySelector('.uip-q');
+ const go=(v,keepPage)=>{ st.v=v; if(!keepPage) st.page=0; draw(); };
+ const crumb=parts=>`<nav class="uip-crumb">${parts.map((p,i)=>i<parts.length-1?`<a data-nav="${p[0]}">${h(p[1])}</a>`:`<span>${h(p[1])}</span>`).join('<i>›</i>')}</nav>`;
+ const pager=total=>{ if(total<=PER) return ''; const pages=Math.ceil(total/PER); return `<div class="uip-nav"><button data-pg="-1">${T.prev}</button><span class="uip-pi">${st.page+1} / ${pages}</span><button data-pg="1">${T.next}</button></div>`; };
+ const inCart=k=>st.cart.includes(k);
+ const hint=(n,msg)=>`<div class="uip-hint"><ol class="uip-trk">${T.steps.map((x,i)=>`<li class="${i<n?'done':i===n?'on':''}"><b>${i<n?'✓':i+1}</b>${h(x)}</li>`).join('')}</ol><span>${msg}</span></div>`;
+ const card=(c,x,n,hl,showCat)=>{ const k=c.id+'.'+x.id, hint=L==='ko'?x.hko:x.hen;
+  return `<div class="uip-card${hl?' hl':''}"><div class="uip-pv">${demo(k,L)}</div><p class="uip-n"><b>${String(n+1).padStart(2,'0')}</b>${h(nm(x,L))}${n<3&&!showCat?`<span class="uip-tag">${T.popular}</span>`:''}</p><p class="uip-e">${L==='ko'?h(x.en):''}${showCat?`${L==='ko'?' · ':''}<a class="uip-catl" data-nav="l2:${c.id}">${h(nm(c,L))}</a>`:''}</p><p class="uip-x">${h(hint)}</p><div class="uip-acts"><button class="uip-pick" data-pick="${k}">${T.pick}</button><button class="uip-add${inCart(k)?' on':''}" data-add="${k}" aria-pressed="${inCart(k)}">${inCart(k)?T.added:T.add}</button></div></div>`; };
 
-function renderL2(root,st,id,hl){ const c=index().l2[id], g=c.parent, T=TX[st.L];
- if(hl && st.page===0 && !st._jumped){ const k=c.list.findIndex(x=>x.id===hl); if(k>=0) st.page=Math.floor(k/PER); st._jumped=1; }
- const s=st.page*PER, slice=c.list.slice(s,s+PER), cn=st.L==='ko'?c.ko:c.en, gn=st.L==='ko'?g.ko:g.en;
- root.innerHTML=`<div class="uip-head"><div><span class="uip-badge">${gn} › ${cn} ${c.list.length}${st.L==='ko'?'가지':''}</span><p class="uip-h">${T.l2H(cn)}</p></div></div>
- <div class="uip-grid">${slice.map((x,i)=>{const n=s+i;const hint=st.L==='ko'?x.hko:x.hen;return `<div class="uip-card${x.id===hl?' hl':''}"><div class="uip-pv">${demo(c.id+'.'+x.id,st.L)}</div><p class="uip-n"><b>${String(n+1).padStart(2,'0')}</b>${st.L==='ko'?x.ko:x.en}${n<3?`<span class="uip-tag">${T.popular}</span>`:''}</p><p class="uip-e">${st.L==='ko'?x.en:''}</p><p class="uip-x">${hint}</p><button class="uip-pick" data-q="${esc(T.pickQ(x.ko,x.en,gn,cn))}">${T.pick}</button></div>`}).join('')}</div>
- ${pager(st,c.list.length,()=>renderL2(root,st,id,hl))}
- <div class="uip-foot"><button data-q="${esc(T.pairsQ(cn))}">${T.pairs}</button><button data-q="${esc(T.showQ(gn))}">${gn}${T.others}</button><button data-q="${esc(T.mapQ)}">${T.toMap}</button></div>`;
- root.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>send(b.dataset.q.replace(/\\'/g,"'")));
- UIP.fx._init(root);
+ function draw(){ const v=st.v; let html='';
+  if(v.t==='map'){ const tot=CAT.reduce((a,g)=>a+g.l2.reduce((b,c)=>b+c.list.length,0),0), kinds=CAT.reduce((a,g)=>a+g.l2.length,0); const s=st.page*PER, slice=CAT.slice(s,s+PER);
+   html=`<div class="uip-head"><div><span class="uip-badge">${T.map} · ${CAT.length}${L==='ko'?'개 그룹':' groups'} · ${kinds}${L==='ko'?'종류':' kinds'} · ${tot}${L==='ko'?'개':' patterns'}</span><p class="uip-h">${T.mapH}</p></div></div>${hint(0,T.hMap)}
+   <div class="uip-grid">${slice.map((g,i)=>{const n=g.l2.reduce((b,c)=>b+c.list.length,0);return `<div class="uip-card tile" data-nav="l1:${g.id}" tabindex="0"><div class="uip-pv">${demo(g.rep,L)}</div><p class="uip-n"><b>${String(s+i+1).padStart(2,'0')}</b>${h(nm(g,L))}</p><p class="uip-e">${L==='ko'?h(g.en):''}</p><p class="uip-c">${g.l2.length} ${T.kinds} · ${n}${T.items||' '+T.patterns}</p></div>`}).join('')}</div>${pager(CAT.length)}<p class="uip-note">${T.note}</p>`;
+  } else if(v.t==='l1'){ const g=IDX.l1[v.id], s=st.page*PER, slice=g.l2.slice(s,s+PER);
+   html=`${crumb([['map',T.map],['',nm(g,L)]])}<div class="uip-head"><div><span class="uip-badge">${h(nm(g,L))} · ${g.l2.length} ${T.kinds}</span><p class="uip-h">${T.l1H}</p></div></div>${hint(1,T.hL1)}
+   <div class="uip-grid">${slice.map((c,i)=>{const lab=L==='ko'?c.easy[0]:c.easy[1];const top=c.list.slice(0,3).map(x=>nm(x,L)).join(' · ');return `<div class="uip-card tile" data-nav="l2:${c.id}" tabindex="0"><div class="uip-pv">${demo(c.id+'.'+c.list[0].id,L)}</div><p class="uip-n"><b>${s+i+1}</b>${h(lab)}</p><p class="uip-e">${L==='ko'?h(c.ko+' '+c.en):h(c.en)}</p><p class="uip-c">${c.list.length} ${T.patterns}</p><p class="uip-x">${T.top}: ${h(top)}</p><p class="uip-c">${T.view} ›</p></div>`}).join('')}</div>${pager(g.l2.length)}`;
+  } else if(v.t==='l2'){ const c=IDX.l2[v.id], g=c.parent;
+   if(v.hl && !v._j){ const k=c.list.findIndex(x=>x.id===v.hl); if(k>=0) st.page=Math.floor(k/PER); v._j=1; }
+   const s=st.page*PER, slice=c.list.slice(s,s+PER), pr=pairsFor(c);
+   html=`${crumb([['map',T.map],['l1:'+g.id,nm(g,L)],['',nm(c,L)]])}<div class="uip-head"><div><span class="uip-badge">${h(nm(g,L))} › ${h(nm(c,L))} ${c.list.length}${L==='ko'?'가지':''}</span><p class="uip-h">${h(T.l2H(nm(c,L)))}</p></div></div>${hint(2,T.hL2)}
+   <div class="uip-grid">${slice.map((x,i)=>card(c,x,s+i,x.id===v.hl)).join('')}</div>${pager(c.list.length)}
+   <div class="uip-foot">${pr?`<button data-nav="l2:${pr}">${T.pairs}</button>`:''}<button data-nav="l1:${g.id}">${h(nm(g,L))}${T.others}</button><button data-nav="map">${T.toMap}</button></div>`;
+  } else if(v.t==='q'){ const r=search(v.q), s=st.page*PER, slice=r.items.slice(s,s+PER);
+   html=`${crumb([['map',T.map],['',v.q]])}<div class="uip-head"><div><span class="uip-badge">${h(T.sH(v.q,r.items.length))}</span></div></div>${r.items.length?hint(2,T.hL2):''}
+   ${r.cats.length?`<div class="uip-cats"><span>${T.sCats}</span>${r.cats.map(c=>`<button class="uip-chip" data-nav="l2:${c.id}">${h(nm(c,L))} ${c.list.length}</button>`).join('')}</div>`:''}
+   ${r.items.length?`<div class="uip-grid">${slice.map((z,i)=>card(z.c,z.x,s+i,false,true)).join('')}</div>${pager(r.items.length)}`:`<p class="uip-note">${h(T.sNone(v.q))}</p><div class="uip-foot"><button data-ask="1">${h(T.sAsk(v.q))}</button><button data-nav="map">${T.toMap}</button></div>`}`;
+  }
+  body.innerHTML=html; UIP.fx._init(body); drawTray();
+ }
+ function drawTray(){ const n=st.cart.length; tray.hidden=!n; if(!n){tray.innerHTML='';return;}
+  tray.innerHTML=`<span class="uip-tl">${T.tray(n)}</span>${st.cart.map(k=>{const z=item(k);return `<span class="uip-chip on">${h(nm(z.x,L))}<button data-rm="${k}" aria-label="${T.rm} ${h(nm(z.x,L))}">×</button></span>`}).join('')}<span class="uip-tsp"></span><button class="uip-tclr" data-clr="1">${T.trayClear}</button><button class="uip-btn" data-send="1">${T.traySend(n)}</button>`; }
+ const flash=el=>{ const t=el.textContent; el.classList.add('sent'); el.textContent=T.sent; setTimeout(()=>{ if(document.body.contains(el)){ el.classList.remove('sent'); el.textContent=t; } },1800); };
+ const nav=s=>{ if(s==='map') return go({t:'map'}); const [t,id]=s.split(':'); if(t==='l1'&&IDX.l1[id]) go({t:'l1',id}); else if(t==='l2'&&IDX.l2[id]) go({t:'l2',id}); if(st.v.t!=='q'){ qi.value=''; st.q=''; } };
+ root.addEventListener('click',e=>{ const el=e.target.closest('[data-nav],[data-pg],[data-pick],[data-add],[data-rm],[data-clr],[data-send],[data-ask]'); if(!el||!root.contains(el)) return;
+  if(el.classList.contains('tile') && e.target.closest('.uip-pv button,.uip-pv input,.uip-pv .uip-btn')) return;
+  const d=el.dataset;
+  if(d.nav!=null){ e.preventDefault(); nav(d.nav); root.scrollIntoView&&root.getBoundingClientRect().top<0&&root.scrollIntoView({block:'start'}); }
+  else if(d.pg){ const tot=st.v.t==='map'?CAT.length:st.v.t==='l1'?IDX.l1[st.v.id].l2.length:st.v.t==='l2'?IDX.l2[st.v.id].list.length:search(st.v.q).items.length; const pages=Math.ceil(tot/PER); st.page=(st.page+(+d.pg)+pages)%pages; draw(); }
+  else if(d.pick){ const z=item(d.pick); send(T.pickQ(...pickArgs(z.c,z.x,L))); flash(el); }
+  else if(d.add){ const k=d.add, i=st.cart.indexOf(k); if(i>=0) st.cart.splice(i,1); else st.cart.push(k); el.classList.toggle('on',i<0); el.textContent=i<0?T.added:T.add; el.setAttribute('aria-pressed',i<0); drawTray(); }
+  else if(d.rm){ st.cart=st.cart.filter(k=>k!==d.rm); body.querySelectorAll(`[data-add="${d.rm}"]`).forEach(b=>{b.classList.remove('on');b.textContent=T.add;b.setAttribute('aria-pressed','false')}); drawTray(); }
+  else if(d.clr){ st.cart=[]; body.querySelectorAll('[data-add].on').forEach(b=>{b.classList.remove('on');b.textContent=T.add;b.setAttribute('aria-pressed','false')}); drawTray(); }
+  else if(d.send){ if(st.cart.length===1){ const z=item(st.cart[0]); send(T.pickQ(...pickArgs(z.c,z.x,L))); } else send(T.multiQ(st.cart.map(k=>{const z=item(k);return pickArgs(z.c,z.x,L)}))); flash(el); }
+  else if(d.ask){ send(T.askQ(st.v.q)); }
+ });
+ root.addEventListener('keydown',e=>{ const t=e.target; if(t.classList&&t.classList.contains('tile')&&(e.key==='Enter'||e.key===' ')){ e.preventDefault(); nav(t.dataset.nav); } });
+ let tm, before=null;
+ qi.addEventListener('input',()=>{ clearTimeout(tm); tm=setTimeout(()=>{ const q=qi.value.trim(); st.q=q;
+  if(q){ if(st.v.t!=='q') before={v:st.v,page:st.page}; st.v={t:'q',q}; st.page=0; draw(); }
+  else if(st.v.t==='q'){ const b=before||{v:{t:'map'},page:0}; st.v=b.v; st.page=b.page; draw(); } },140); });
+ qi.addEventListener('keydown',e=>{ if(e.key==='Escape'){ qi.value=''; qi.dispatchEvent(new Event('input')); } });
+ if(start.t==='q') qi.value=start.q;
+ draw();
 }
 
 UIP.show=function(elId,target,lang){ injectCss(); index(); const root=document.getElementById(elId); root.classList.add('uip');
- const L=(lang==='en')?'en':'ko', st={L,page:0}; UIP._L=L; target=(target||'map').trim();
- if(target==='map') return renderMap(root,st);
- if(IDX.l1[target]) return renderL1(root,st,target);
- const [a,b]=target.split('.'); if(IDX.l2[a]) return renderL2(root,st,a,b);
- const q=target.toLowerCase(); const hit=Object.values(IDX.l2).find(c=>c.ko===target||c.en.toLowerCase()===q);
- if(hit) return renderL2(root,st,hit.id);
- renderMap(root,st);
+ const L=(lang==='en')?'en':'ko'; UIP._L=L; target=String(target||'map').trim();
+ let v={t:'map'};
+ if(target==='map'||!target) v={t:'map'};
+ else if(target[0]==='?') v=target.slice(1).trim()?{t:'q',q:target.slice(1).trim()}:{t:'map'};
+ else if(IDX.l1[target]) v={t:'l1',id:target};
+ else { const [a,b]=target.split('.'); if(IDX.l2[a]) v={t:'l2',id:a,hl:b};
+  else { const q=target.toLowerCase(); const hit=Object.values(IDX.l2).find(c=>c.ko===target||c.en.toLowerCase()===q); v=hit?{t:'l2',id:hit.id}:{t:'q',q:target}; } }
+ makeApp(root,L,v);
 };
 UIP.ids=()=>{index(); return Object.keys(IDX.l2);};
 
