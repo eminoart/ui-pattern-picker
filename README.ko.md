@@ -8,7 +8,20 @@ UI 패턴 피커는 **UI 패턴 439개**를 모은 카드 모음입니다. 카�
 
 <p align="center"><img src="docs/map-ko.png" width="600" alt="UI 지도: 패턴 그룹 10개"></p>
 
-## 바로 써 보기
+## Claude 스킬로 설치하기
+
+스킬을 설치하면 "UI 뭐가 있어", "로딩 보여줘"처럼 물을 때마다 Claude가 이 카드 모음을 불러와 보여 줍니다.
+
+- **Claude 앱 (웹·데스크톱)**: [`ui-pattern-picker-skill.zip`](ui-pattern-picker-skill.zip)을 내려받아 **설정 → 기능 → 스킬**에서 업로드하세요.
+- **Claude Code**: 폴더를 스킬 폴더에 복사하세요.
+  ```sh
+  git clone https://github.com/eminoart/ui-pattern-picker
+  cp -r ui-pattern-picker/skill/ui-pattern-picker ~/.claude/skills/
+  ```
+
+스킬 파일은 [`skill/ui-pattern-picker/SKILL.md`](skill/ui-pattern-picker/SKILL.md)에 있습니다. 채팅 안에 화면을 띄울 수 있는 앱에서는 카드가 대화창에 바로 나오고, 그렇지 않은 곳에서는 Claude가 열어 볼 HTML 파일을 만들어 줍니다.
+
+## 바로 써 보기 (아무 웹 페이지에서나)
 
 HTML 페이지(또는 HTML을 실행하는 AI 채팅 화면)에 아래 네 줄을 넣으면 됩니다.
 
@@ -71,6 +84,7 @@ HTML 페이지(또는 HTML을 실행하는 AI 채팅 화면)에 아래 네 줄�
 | `demos-h.js` | 미리보기에서 함께 쓰는 작은 도구 |
 | `core.js` | 화면 그리기, 쪽 넘기기, 스타일, 동작 |
 | `uip.js` | **CDN이 내보내는 완성 파일.** 직접 고치지 마세요 |
+| `skill/ui-pattern-picker/SKILL.md` | Claude 스킬 (`ui-pattern-picker-skill.zip`으로도 제공) |
 | `build.sh` | `uip.js`를 다시 만들고 모든 미리보기가 도는지 확인 |
 
 ## 업데이트하는 법

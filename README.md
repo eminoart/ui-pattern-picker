@@ -8,7 +8,20 @@ UI Pattern Picker is a catalog of **439 UI patterns**, each with a small **live 
 
 <p align="center"><img src="docs/map-en.png" width="600" alt="The UI map: 10 groups of patterns"></p>
 
-## Quick start
+## Install as a Claude skill
+
+The skill tells Claude to load this catalog whenever you ask about UI, e.g. "what UI is there?" or "show me loading options".
+
+- **Claude apps (web, desktop)**: download [`ui-pattern-picker-skill.zip`](ui-pattern-picker-skill.zip), then upload it under **Settings → Capabilities → Skills**.
+- **Claude Code**: copy the folder into your skills directory:
+  ```sh
+  git clone https://github.com/eminoart/ui-pattern-picker
+  cp -r ui-pattern-picker/skill/ui-pattern-picker ~/.claude/skills/
+  ```
+
+The skill file itself is [`skill/ui-pattern-picker/SKILL.md`](skill/ui-pattern-picker/SKILL.md). In apps that can show inline widgets, the cards appear right in the chat; elsewhere Claude writes an HTML file for you to open.
+
+## Quick start (any web page)
 
 Drop these lines into any HTML page (or an AI chat widget that runs HTML):
 
@@ -71,6 +84,7 @@ The order reflects how commonly each pattern appears in widely used apps and des
 | `demos-h.js` | Small shared helpers for previews |
 | `core.js` | Rendering, paging, styles and interactions |
 | `uip.js` | **The built file the CDN serves.** Do not edit by hand |
+| `skill/ui-pattern-picker/SKILL.md` | The Claude skill (also zipped as `ui-pattern-picker-skill.zip`) |
 | `build.sh` | Rebuilds `uip.js` and checks every preview runs |
 
 ## Updating
