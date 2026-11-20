@@ -1,6 +1,7 @@
 ---
 name: ui-pattern-picker
-description: Use when someone wants a UI element but doesn't know what it's called, or gives a vague design request like "make it modern". Shows a ready-made, bilingual (Korean/English) catalog of 439 UI patterns as live preview cards, then helps them name, prompt for and apply the one they pick. Triggers on "what UI is there", "show me loading options", "UI 뭐가 있어", "로딩 보여줘".
+description: >-
+  Visual UI component and design pattern finder for when you don't know what a UI element is called. Shows 439 frontend UI patterns (loading spinner, skeleton, button, modal, toast, tabs, navigation, form input, date picker, chart, table, card, glassmorphism, micro-interaction, AI chat UI) as live animated preview cards in Korean and English, then gives the industry name and a ready prompt to apply it. Use for UI inspiration, design vocabulary, vague requests like "make it modern", or "I don't know the name of this UI". Triggers: "what UI is there", "what is this UI called", "show me loading options", "UI 이름을 모르겠어", "이거 뭐라고 불러", "UI 뭐가 있어", "로딩 보여줘".
 ---
 
 # UI Pattern Picker
