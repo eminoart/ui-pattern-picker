@@ -1,5 +1,9 @@
 # UI Pattern Picker
 
+[![skills.sh](https://skills.sh/b/eminoart/ui-pattern-picker)](https://skills.sh/eminoart/ui-pattern-picker)
+
+**Quick install:** `npx skills add eminoart/ui-pattern-picker`
+
 **English** · [한국어](README.ko.md)
 
 Ever asked an AI to "make it look modern" and got something generic? Usually it's a vocabulary problem: you'd recognise what you want on sight, but you don't know what it's called.
@@ -26,10 +30,14 @@ You never need to know a term first. Describing the situation works too: `What d
 
 Skills need code execution to be turned on. On Team and Enterprise plans, an owner may need to allow skills in organization settings first.
 
-### Claude Code
+### Claude Code, Cursor, Codex and other agents
+```sh
+npx skills add eminoart/ui-pattern-picker
+```
+Or copy it by hand:
 ```sh
 git clone https://github.com/eminoart/ui-pattern-picker
-cp -r ui-pattern-picker/skill/ui-pattern-picker ~/.claude/skills/
+cp -r ui-pattern-picker/skills/ui-pattern-picker ~/.claude/skills/
 ```
 In a terminal there is no inline widget, so Claude writes a small HTML file for you to open in a browser.
 
@@ -95,7 +103,7 @@ The order reflects how commonly each pattern appears in widely used apps and des
 
 | File | What it holds |
 |---|---|
-| `skill/ui-pattern-picker/SKILL.md` | The Claude skill (also zipped as `ui-pattern-picker-skill.zip`) |
+| `skills/ui-pattern-picker/SKILL.md` | The Claude skill (also zipped as `ui-pattern-picker-skill.zip`) |
 | `catalog.js` | Every name and the order. One pattern: `id~Korean~English~Korean hint~English hint` |
 | `demos.js`, `demos-1.js` … `demos-5.js` | The live previews, keyed `category.pattern` |
 | `demos-h.js` | Small shared helpers for previews |

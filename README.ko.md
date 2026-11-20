@@ -1,5 +1,9 @@
 # UI 패턴 피커
 
+[![skills.sh](https://skills.sh/b/eminoart/ui-pattern-picker)](https://skills.sh/eminoart/ui-pattern-picker)
+
+**빠른 설치:** `npx skills add eminoart/ui-pattern-picker`
+
 [English](README.md) · **한국어**
 
 AI에게 "모던하게 해줘"라고 했는데 평범한 결과가 나온 적 있나요? 대부분은 이름을 몰라서예요. 보면 원하는 걸 알아보지만, 그게 뭐라고 불리는지는 모르는 거죠.
@@ -26,10 +30,14 @@ UI 패턴 피커는 **Claude 스킬**과 **UI 패턴 439개** 카드 모음입�
 
 스킬은 코드 실행 기능이 켜져 있어야 동작합니다. Team·Enterprise 요금제에서는 관리자가 조직 설정에서 스킬을 먼저 허용해야 할 수 있어요.
 
-### Claude Code
+### Claude Code, Cursor, Codex 등 에이전트
+```sh
+npx skills add eminoart/ui-pattern-picker
+```
+직접 복사해도 됩니다:
 ```sh
 git clone https://github.com/eminoart/ui-pattern-picker
-cp -r ui-pattern-picker/skill/ui-pattern-picker ~/.claude/skills/
+cp -r ui-pattern-picker/skills/ui-pattern-picker ~/.claude/skills/
 ```
 터미널에서는 대화창에 화면을 띄울 수 없어서, Claude가 브라우저로 열어 볼 HTML 파일을 만들어 줍니다.
 
@@ -95,7 +103,7 @@ Claude가 세 가지를 답해 줍니다.
 
 | 파일 | 내용 |
 |---|---|
-| `skill/ui-pattern-picker/SKILL.md` | Claude 스킬 (`ui-pattern-picker-skill.zip`으로도 제공) |
+| `skills/ui-pattern-picker/SKILL.md` | Claude 스킬 (`ui-pattern-picker-skill.zip`으로도 제공) |
 | `catalog.js` | 모든 이름과 순서. 패턴 하나는 `id~한글~English~한글 설명~English hint` |
 | `demos.js`, `demos-1.js` … `demos-5.js` | 미리보기. 키는 `종류.패턴` |
 | `demos-h.js` | 미리보기에서 함께 쓰는 작은 도구 |
