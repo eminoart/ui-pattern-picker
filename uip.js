@@ -120,6 +120,24 @@ D['scroll.fadeup']=t=>`<div style="width:58%">${[0,.2,.4].map((d,i)=>`<div class
 D['chat.typing']=t=>`<div style="width:78%;display:flex;flex-direction:column;gap:8px"><div style="align-self:flex-end;background:var(--uip-acbg);color:${A};font-size:11px;padding:4px 10px;border-radius:10px">${t('요약해줘','Summarize this')}</div><div style="display:flex;gap:4px;padding:7px 10px;background:${S};border-radius:10px;width:fit-content">${[0,.2,.4].map(d=>`<span class="uip-dot sm" style="animation-delay:${d}s"></span>`).join('')}</div></div>`;
 D['icons.hamburger']=t=>`<div style="display:flex;align-items:center;gap:12px;font-size:22px"><span style="animation:uip-pulse 2.4s infinite">≡</span><span class="uip-cap">vs</span><span style="animation:uip-pulse 2.4s infinite 1.2s">⋮</span></div>`;
 })();
+
+/* ---------- chat ---------- */
+(function(){
+const D=window.UIP_DEMOS, A='var(--uip-ac)', S='var(--uip-surface)', B='var(--uip-b)';
+const me=(x)=>`<div style="align-self:flex-end;background:${A};color:#fff;font-size:12px;padding:6px 10px;border-radius:12px 12px 2px 12px;max-width:80%">${x}</div>`;
+const ai=(x,ex='')=>`<div style="align-self:flex-start;background:${S};border:0.5px solid ${B};font-size:12px;padding:6px 10px;border-radius:12px 12px 12px 2px;max-width:85%;${ex}">${x}</div>`;
+const col=x=>`<div style="width:86%;display:flex;flex-direction:column;gap:6px">${x}</div>`;
+D['chat.bubble']=t=>col(me(t('내일 회의 몇 시야?','When is the meeting?'))+ai(t('오전 10시예요','10 a.m. tomorrow'))+`<div style="align-self:flex-end;font-size:10px;color:var(--uip-mute)">${t('읽음 · 오후 2:14','Read · 2:14 PM')}</div>`);
+D['chat.prompt']=t=>`<div style="width:88%;background:${S};border:0.5px solid var(--uip-bs);border-radius:16px;padding:8px 8px 8px 12px"><div class="uip-field" style="border:0;width:100%;height:auto;padding:0;background:none">${t('무엇이든 물어보세요','Ask anything')}<span class="uip-caret"></span></div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px"><span style="font-size:16px;color:var(--uip-sub)">＋</span><button class="uip-btn" style="width:28px;height:28px;padding:0;border-radius:50%">↑</button></div></div>`;
+D['chat.typing']=D['chat.typing']||(t=>'');
+D['chat.stream']=t=>col(me(t('한 줄로 요약해줘','Sum it up in one line'))+ai(`<span class="uip-stream" data-text="${t('3분기 매출은 전년 대비 12% 늘었고, 신규 고객이 성장을 이끌었어요.','Q3 revenue grew 12% year over year, led by new customers.')}"></span><span class="uip-caret"></span>`,'min-height:44px'));
+D['chat.suggest']=t=>`<div style="display:flex;flex-direction:column;gap:6px;width:86%">${[t('이 문서 요약해줘','Summarize this doc'),t('표로 정리해줘','Turn it into a table'),t('메일 초안 써줘','Draft an email')].map(x=>`<span class="uip-btn2" style="padding:6px 10px;font-size:12px;border-radius:999px;text-align:left" onclick="UIP.fx.press(this)">${x}</span>`).join('')}</div>`;
+D['chat.regen']=t=>col(ai(t('초안을 작성했어요.','Here is a draft.'))+`<div style="display:flex;gap:6px;color:var(--uip-sub);font-size:13px"><span style="cursor:pointer" onclick="this.textContent='✓';setTimeout(()=>this.textContent='⧉',1200)">⧉</span><span style="cursor:pointer" onclick="this.animate([{transform:'rotate(0)'},{transform:'rotate(360deg)'}],{duration:500})">↻</span><span style="font-size:11px">${t('복사 · 다시 생성','Copy · Regenerate')}</span></div>`);
+D['chat.feedback']=t=>col(ai(t('도움이 됐나요?','Was this helpful?'))+`<div style="display:flex;gap:6px">${['👍','👎'].map(x=>`<button class="uip-ibtn" style="width:32px;height:30px;font-size:13px" onclick="[...this.parentNode.children].forEach(b=>b.style.borderColor='');this.style.borderColor='var(--uip-ac)'">${x}</button>`).join('')}</div>`);
+D['chat.cite']=t=>col(ai(t('매출이 12% 늘었어요','Revenue rose 12%')+` <sup style="background:var(--uip-acbg);color:${A};border-radius:4px;padding:0 4px;font-size:10px">1</sup> <sup style="background:var(--uip-acbg);color:${A};border-radius:4px;padding:0 4px;font-size:10px">2</sup>`)+`<div style="display:flex;gap:4px;font-size:10px">${['IR 2026 Q3.pdf','news.example.com'].map((x,i)=>`<span style="border:0.5px solid ${B};border-radius:6px;padding:2px 6px;background:${S}">${i+1} ${x}</span>`).join('')}</div>`);
+D['chat.attach']=t=>`<div style="width:88%;background:${S};border:0.5px solid var(--uip-bs);border-radius:14px;padding:8px"><div style="display:flex;gap:6px;margin-bottom:6px"><span style="display:flex;align-items:center;gap:6px;border:0.5px solid ${B};border-radius:8px;padding:4px 8px;font-size:11px"><span style="width:18px;height:18px;border-radius:4px;background:var(--uip-danger);color:#fff;font-size:8px;display:flex;align-items:center;justify-content:center">PDF</span>${t('보고서.pdf','report.pdf')} ✕</span></div><div style="font-size:12px;color:var(--uip-mute)">${t('이 파일 요약해줘','Summarize this file')}</div></div>`;
+D['chat.voice']=t=>`<div style="display:flex;flex-direction:column;align-items:center;gap:10px"><div style="display:flex;gap:3px;align-items:center;height:28px">${[10,22,14,26,12,20,8].map((h,i)=>`<span style="width:4px;height:${h}px;border-radius:2px;background:${A};animation:uip-pulse .9s infinite ${i*.1}s"></span>`).join('')}</div><button class="uip-btn" style="width:40px;height:40px;padding:0;border-radius:50%">●</button><span class="uip-cap" style="margin:0">${t('듣고 있어요…','Listening…')}</span></div>`;
+})();
 /* UI Pattern Picker core. Usage in a widget:
    <div id="uip"></div>
    <script src="https://cdn.jsdelivr.net/gh/eminoart/ui-pattern-picker@main/uip.js"></script>
@@ -274,6 +292,6 @@ UIP.fx={
  spin45(b){b.style.transform=b.style.transform?'':'rotate(45deg)'},
  seg(s){[...s.parentNode.children].forEach(x=>x.classList.toggle('on',x===s))},
  menu(b){const m=b.parentNode.querySelector('.uip-menu'); m.classList.toggle('open');},
- _init(root){ root.querySelectorAll('.uip-steps').forEach(el=>{ let k=0; const tick=()=>{ if(!document.body.contains(el)) return clearInterval(iv); k=(k+1)%4; el.querySelectorAll('.uip-step').forEach((s,i)=>s.classList.toggle('on',i<k)); }; const iv=setInterval(tick,900); tick(); }); }
+ _init(root){ root.querySelectorAll('.uip-stream').forEach(el=>{const full=el.dataset.text;let i=0;const iv=setInterval(()=>{if(!document.body.contains(el))return clearInterval(iv);i=i>full.length+15?0:i+1;el.textContent=full.slice(0,i)},60)});  root.querySelectorAll('.uip-steps').forEach(el=>{ let k=0; const tick=()=>{ if(!document.body.contains(el)) return clearInterval(iv); k=(k+1)%4; el.querySelectorAll('.uip-step').forEach((s,i)=>s.classList.toggle('on',i<k)); }; const iv=setInterval(tick,900); tick(); }); }
 };
 })();

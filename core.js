@@ -152,6 +152,6 @@ UIP.fx={
  spin45(b){b.style.transform=b.style.transform?'':'rotate(45deg)'},
  seg(s){[...s.parentNode.children].forEach(x=>x.classList.toggle('on',x===s))},
  menu(b){const m=b.parentNode.querySelector('.uip-menu'); m.classList.toggle('open');},
- _init(root){ root.querySelectorAll('.uip-steps').forEach(el=>{ let k=0; const tick=()=>{ if(!document.body.contains(el)) return clearInterval(iv); k=(k+1)%4; el.querySelectorAll('.uip-step').forEach((s,i)=>s.classList.toggle('on',i<k)); }; const iv=setInterval(tick,900); tick(); }); }
+ _init(root){ root.querySelectorAll('.uip-stream').forEach(el=>{const full=el.dataset.text;let i=0;const iv=setInterval(()=>{if(!document.body.contains(el))return clearInterval(iv);i=i>full.length+15?0:i+1;el.textContent=full.slice(0,i)},60)});  root.querySelectorAll('.uip-steps').forEach(el=>{ let k=0; const tick=()=>{ if(!document.body.contains(el)) return clearInterval(iv); k=(k+1)%4; el.querySelectorAll('.uip-step').forEach((s,i)=>s.classList.toggle('on',i<k)); }; const iv=setInterval(tick,900); tick(); }); }
 };
 })();
