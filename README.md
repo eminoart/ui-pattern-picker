@@ -75,7 +75,7 @@ Claude replies with three things:
    Show the loading state as a Skeleton UI: grey blocks shaped like the real cards,
    a left-to-right shimmer repeating every 1.5s, replaced by the content with a 200ms fade-in.
    ```
-3. **An offer to apply it** to the screen or code you're working on
+3. **A question about applying it**: if a design or code is in progress, Claude names it and asks whether to apply it there, give just the prompt, or use another screen
 
 ## Use it on any web page
 

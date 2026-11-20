@@ -25,6 +25,7 @@ When this skill runs, send only these lines to the inline visual tool (for examp
 - **language**: match the person. Korean → `ko` (Korean names with English alongside). Anything else → `en` (industry English terms).
 - The library handles everything inside the widget: a search box, moving between map, group and category with a breadcrumb (no chat round trip), paging (9 per page), popularity order, "Popular" tags, "Use this ↗" for one pattern, and "+ Add" to collect several patterns and send them together.
 - Keep your text outside the widget to one or two sentences. Do not repeat the cards in text.
+- **Work in progress?** If a design, page, artifact or code is being made in this conversation (including when the person opens this skill by hand in the middle of that work), name it in the sentence before the widget, e.g. "고르면 지금 만들고 있는 랜딩 페이지에 적용할지 물어볼게요." / "Pick one and I'll ask whether to apply it to your landing page."
 - After the widget, add one short line with the web link for the same view, in case the preview does not load: `https://eminoart.github.io/ui-pattern-picker/?v=[target]&lang=[ko|en]` (for a search target use `?q=[words]&lang=[ko|en]`).
 - **No inline visual tool** (ChatGPT, Codex, Cursor, a terminal)? Give that web link instead (e.g. `?v=loading&lang=ko`, `?v=overlay.toast&lang=en`) and say in one line that clicking a card's "Use this" button copies its prompt, to paste back into the chat. If the person prefers a local file, write the same widget lines into an `.html` file with `<!DOCTYPE html>` and open it in the browser (`open` / `xdg-open` / `start`).
 
@@ -65,7 +66,9 @@ If nothing fits, show the closest category and offer to add the missing pattern.
 The message looks like `UI 패턴 선택: 토스트 (Toast) — 알리고 기다리게 하기 › 오버레이 창`. Answer in the person's language, in text (no widget), with all three parts:
 1. **When to use it, and how it differs**: two or three good situations, one to avoid, and a one-line comparison with its most confusable twin (e.g. Toast fades on its own; Snackbar includes an action like Undo).
 2. **A prompt to paste into an AI** (code block): the name plus its English term plus concrete properties (size, position, behaviour, timing, states). Give a short and a detailed version. Include any style the person mentioned (e.g. glassmorphism).
-3. **Apply it**: if a design, codebase, page or artifact is in progress in this conversation, offer to apply it there and do so once they agree; otherwise ask in one line which screen to apply it to.
+3. **Apply it**: always end by asking, never by applying silently.
+   - **Work in progress** (a design, page, artifact or code being made in this conversation): ask directly whether to apply the pick to it, naming it. If a multiple-choice question tool is available, use it with these options: `[name]에 바로 적용` / `Apply to [name]` (first, recommended), `프롬프트만 받을게` / `Just the prompt`, `다른 화면에 적용` / `Apply to another screen`. Otherwise ask in one line. When they agree, change that same design or code in place (do not start a new file), then say in one line what changed.
+   - **Nothing in progress**: ask in one line which screen to apply it to, or offer to build a small example screen with it.
 
 ## Several picks at once ("UI 패턴 여러 개 선택 (N개):" / "UI patterns picked (N):")
 The message lists one pattern per line, e.g. `- 대시보드 (Dashboard) — 화면 구성 › 페이지 레이아웃`. Treat them as one screen being designed together:
