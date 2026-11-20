@@ -6,6 +6,8 @@ Ever asked an AI to "make it look modern" and got something generic? Most of the
 
 UI Pattern Picker is a catalog of **439 UI patterns**, each with a small **live preview** you can click, type into or watch move. Names come in **Korean and English**, using the terms designers and developers actually use, and every list is ordered by how commonly the pattern is used.
 
+<p align="center"><img src="docs/map-en.png" width="600" alt="The UI map: 10 groups of patterns"></p>
+
 ## Quick start
 
 Drop these lines into any HTML page (or an AI chat widget that runs HTML):
@@ -23,12 +25,24 @@ Drop these lines into any HTML page (or an AI chat widget that runs HTML):
 | `target` | `map` (everything) · a group id · a category id · `category.pattern` to highlight one card, e.g. `loading.skeleton` |
 | `lang` | `en` (English terms) or `ko` (Korean names with English alongside) |
 
+## Screenshots
+
+| Button states | Charts |
+|---|---|
+| <img src="docs/button-states-en.png" alt="Nine button states"> | <img src="docs/charts-en.png" alt="Chart types"> |
+
+Every preview is live: spinners spin, toggles switch, calendars accept clicks, and inputs format as you type. The same cards render in Korean:
+
+| 로딩 (Loading) | 날짜·시간 선택 (Date & Time) |
+|---|---|
+| <img src="docs/loading-ko.png" alt="Loading patterns in Korean"> | <img src="docs/date-ko.png" alt="Date pickers in Korean"> |
+
 ## How it is organized
 
 Three levels, each shown as a grid of cards, 9 per page:
 
 1. **Groups (10)**: what you want to do, in plain words
-2. **Categories (42)**: the real term, such as Loading or Overlays
+2. **Categories (43)**: the real term, such as Loading or Overlays
 3. **Patterns (439)**: each with a live preview and a short "when to use" hint
 
 Clicking **Use this** on a card sends a message such as `UI pattern picked: Skeleton — Feedback & Status › Loading` to the host chat (through `sendPrompt`), so an assistant can explain when to use it and write a ready-to-paste prompt. Outside a chat, the message is copied to the clipboard instead.

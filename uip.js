@@ -751,7 +751,7 @@ function pager(st,total,rerender){ if(total<=PER) return ''; const pages=Math.ce
 function renderMap(root,st){ const I=index(), T=TX[st.L]; const all=CAT;
  const tot=all.reduce((a,g)=>a+g.l2.reduce((b,c)=>b+c.list.length,0),0), kinds=all.reduce((a,g)=>a+g.l2.length,0);
  const s=st.page*PER, slice=all.slice(s,s+PER);
- root.innerHTML=`<div class="uip-head"><div><span class="uip-badge">${T.map} · ${all.length} · ${kinds}${st.L==='ko'?'종류':' kinds'} · ${tot}${st.L==='ko'?'개':' patterns'}</span><p class="uip-h">${T.mapH}</p></div></div>
+ root.innerHTML=`<div class="uip-head"><div><span class="uip-badge">${T.map} · ${all.length}${st.L==='ko'?'개 그룹':' groups'} · ${kinds}${st.L==='ko'?'종류':' kinds'} · ${tot}${st.L==='ko'?'개':' patterns'}</span><p class="uip-h">${T.mapH}</p></div></div>
  <div class="uip-grid">${slice.map((g,i)=>{const n=g.l2.reduce((b,c)=>b+c.list.length,0);return `<div class="uip-card tile" data-l1="${g.id}"><div class="uip-pv">${demo(g.rep,st.L)}</div><p class="uip-n"><b>${String(s+i+1).padStart(2,'0')}</b>${st.L==='ko'?g.ko:g.en}</p><p class="uip-e">${st.L==='ko'?g.en:''}</p><p class="uip-c">${g.l2.length} ${T.kinds} · ${n}${T.items||' '+T.patterns}</p></div>`}).join('')}</div>
  ${pager(st,all.length,()=>renderMap(root,st))}<p class="uip-note">${T.note}</p>`; UIP.fx._init(root);
  root.querySelectorAll('[data-l1]').forEach(el=>el.onclick=e=>{ if(e.target.closest('button,input,.uip-btn')) return; const sub={L:st.L,page:0,back:()=>renderMap(root,st)}; renderL1(root,sub,el.dataset.l1);});
