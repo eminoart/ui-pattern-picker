@@ -1,0 +1,8 @@
+# ui-pattern-picker
+
+> Agent skill that shows 439 UI patterns (Korean/English) as live preview cards so people can learn what a UI element is called and get a ready prompt.
+
+- [Install instructions for AI agents](https://github.com/eminoart/ui-pattern-picker/blob/main/INSTALL.md): `npx -y skills add eminoart/ui-pattern-picker -y`, or upload the zip in ChatGPT/Claude
+- [SKILL.md](https://github.com/eminoart/ui-pattern-picker/blob/main/skills/ui-pattern-picker/SKILL.md)
+- [Skill zip](https://github.com/eminoart/ui-pattern-picker/raw/main/ui-pattern-picker-skill.zip)
+- [Web catalog](https://eminoart.github.io/ui-pattern-picker/)

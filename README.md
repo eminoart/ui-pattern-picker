@@ -4,6 +4,8 @@
 
 **Quick install:** `npx skills add eminoart/ui-pattern-picker`
 
+> **AI agents:** to install this skill for a user, follow [INSTALL.md](INSTALL.md).
+
 **English** · [한국어](README.ko.md)
 
 Ever asked an AI to "make it look modern" and got something generic? Usually it's a vocabulary problem: you'd recognise what you want on sight, but you don't know what it's called.

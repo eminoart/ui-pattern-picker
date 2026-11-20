@@ -4,6 +4,8 @@
 
 **빠른 설치:** `npx skills add eminoart/ui-pattern-picker`
 
+> **AI에게 맡기기:** 다른 AI에 `ui-pattern-picker 스킬 설치해줘 (github.com/eminoart/ui-pattern-picker)`라고 하면 [INSTALL.md](INSTALL.md)를 보고 설치합니다.
+
 [English](README.md) · **한국어**
 
 AI에게 "모던하게 해줘"라고 했는데 평범한 결과가 나온 적 있나요? 대부분은 이름을 몰라서예요. 보면 원하는 걸 알아보지만, 그게 뭐라고 불리는지는 모르는 거죠.
